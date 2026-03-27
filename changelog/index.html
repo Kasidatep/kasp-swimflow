@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Changelog | SwimFlow</title>
+<meta name="description" content="Latest SwimFlow product updates and release notes.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://swimflow.memolab.me/changelog/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --bg:#06080f; --bg2:#0c0f1a; --bg3:#111520; --border:#1a2235; --border2:#222d45; --ac:#4f9eff; --ac2:#7c5cfc; --gr:#2ecc8a; --tx:#c0cfe8; --dim:#485870; --br:#e8f0ff; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:var(--bg); color:var(--tx); font-family:"Inter",sans-serif; line-height:1.6; }
+h1,h2,h3 { font-family:"Syne",sans-serif; color:var(--br); line-height:1.2; }
+a { color:var(--ac); text-decoration:none; }
+a:hover { text-decoration:underline; }
+.container { max-width:980px; margin:0 auto; padding:0 22px; }
+nav { position:sticky; top:0; z-index:10; border-bottom:1px solid var(--border); background:rgba(6,8,15,.86); backdrop-filter:blur(18px); }
+.navInner { min-height:62px; display:flex; align-items:center; justify-content:space-between; }
+.logo { font-family:"Syne",sans-serif; font-size:20px; font-weight:800; color:var(--br); }
+.logo span { color:var(--ac); }
+.links { display:flex; gap:14px; font-size:14px; }
+main { padding:46px 0 72px; }
+.hero { border:1px solid rgba(79,158,255,.24); border-radius:16px; background:linear-gradient(140deg, rgba(79,158,255,.11), rgba(124,92,252,.08)); padding:28px; margin-bottom:18px; }
+.hero h1 { font-size:clamp(2rem, 4.3vw, 3rem); margin-bottom:8px; }
+.timeline { display:grid; gap:12px; }
+.release { background:var(--bg2); border:1px solid var(--border); border-radius:14px; padding:16px; }
+.head { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px; }
+.version { font-family:"Syne",sans-serif; color:var(--br); font-size:1.05rem; }
+.date { color:var(--dim); font-size:.82rem; }
+.pills { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px; }
+.pill { font-size:11px; border-radius:999px; padding:3px 8px; border:1px solid rgba(79,158,255,.22); background:rgba(79,158,255,.1); color:var(--ac); }
+ul { margin-left:18px; display:grid; gap:5px; }
+li { color:var(--tx); font-size:.9rem; }
+footer { margin-top:24px; border-top:1px solid var(--border); padding-top:14px; color:var(--dim); font-size:13px; }
+@media (max-width:640px) { .links { display:none; } .hero,.release { padding:14px; } }
+</style>
+</head>
+<body>
+<nav aria-label="Top navigation">
+  <div class="container navInner">
+    <a href="/" class="logo">Swim<span>Flow</span></a>
+    <div class="links">
+      <a href="/docs/">Docs</a>
+      <a href="/templates/">Templates</a>
+      <a href="/app/">Open App</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+  <section class="hero">
+    <h1>Changelog</h1>
+    <p>Track new capabilities, UX improvements, and fixes across SwimFlow releases.</p>
+  </section>
+
+  <section class="timeline" aria-label="Release notes">
+    <article class="release">
+      <div class="head"><h2 class="version">v1.4.0</h2><span class="date">2026-03-27</span></div>
+      <div class="pills"><span class="pill">New</span><span class="pill">UX</span><span class="pill">Export</span></div>
+      <ul>
+        <li>Added templates, docs, and changelog pages to broaden product surface.</li>
+        <li>Improved discoverability of privacy and team pages from homepage resources.</li>
+        <li>Refined messaging around free usage and no-sign-up workflow.</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="head"><h2 class="version">v1.3.0</h2><span class="date">2026-03-24</span></div>
+      <div class="pills"><span class="pill">Routing</span><span class="pill">Editor</span></div>
+      <ul>
+        <li>Improved port-aware routing for cleaner arrows in dense diagrams.</li>
+        <li>Enhanced code editor feedback for syntax and branch labels.</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="head"><h2 class="version">v1.2.0</h2><span class="date">2026-03-19</span></div>
+      <div class="pills"><span class="pill">Performance</span><span class="pill">Quality</span></div>
+      <ul>
+        <li>Faster live preview updates in larger lane configurations.</li>
+        <li>Improved export quality and edge-case rendering stability.</li>
+      </ul>
+    </article>
+  </section>
+
+  <footer>
+    © 2026 SwimFlow · <a href="/">Home</a> · <a href="/team/">Team</a> · <a href="/privacy/">Privacy</a>
+  </footer>
+</main>
+</body>
+</html>

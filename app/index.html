@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ═══ PRIMARY SEO ═══ -->
+<title>SwimFlow — Free UML Swimlane Diagram Builder</title>
+<meta name="description" content="Build swimlane diagrams, BPMN process flows, and UML activity diagrams for free. Visual drag-and-drop builder + code editor. No sign-up. Export SVG & PNG instantly.">
+<meta name="keywords" content="swimlane diagram, UML diagram tool, free online flowchart maker, swimlane diagram software, BPMN diagram tool, cross-functional flowcharts, process flow diagram, UML activity diagram, no-code diagram
+builder, swimlane creator, lucidchart alternative, draw.io alternative, free diagram tool">
+<meta name="author" content="SwimFlow"> 
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://swimflow.memolab.me/app/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #06080f;
+  --bg2: #0c0f1a;
+  --bg3: #111520;
+  --border: #1a2235;
+  --border2: #222d45;
+  --ac: #4f9eff;
+  --ac2: #7c5cfc;
+  --gr: #2ecc8a;
+  --tx: #c0cfe8;
+  --dim: #485870;
+  --br: #e8f0ff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--tx);
+  font-family: "Inter", sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1,
+h2 {
+  font-family: "Syne", sans-serif;
+  color: var(--br);
+  line-height: 1.12;
+}
+
+.page {
+  min-height: 100vh;
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 26px;
+}
+
+.page::before,
+.page::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.page::before {
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 40% at 50% 0%, rgba(79, 158, 255, 0.22) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 85% 80%, rgba(124, 92, 252, 0.18) 0%, transparent 70%);
+}
+
+.page::after {
+  width: 320px;
+  height: 320px;
+  right: -100px;
+  top: -120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(79, 158, 255, 0.28), transparent 70%);
+  filter: blur(10px);
+  animation: drift 7s ease-in-out infinite;
+}
+
+.card {
+  width: min(760px, 100%);
+  background: linear-gradient(180deg, rgba(17, 21, 32, 0.96) 0%, rgba(12, 15, 26, 0.96) 100%);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.03);
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--ac), var(--ac2), transparent);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+  font-family: "Syne", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--br);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ac);
+  box-shadow: 0 0 0 8px rgba(79, 158, 255, 0.15);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(79, 158, 255, 0.12);
+  border: 1px solid rgba(79, 158, 255, 0.3);
+  color: var(--ac);
+  border-radius: 999px;
+  font-size: 12px;
+  padding: 5px 12px;
+  font-weight: 600;
+}
+
+.badge::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gr);
+  animation: pulse 2s infinite;
+}
+
+h1 {
+  margin-top: 14px;
+  margin-bottom: 10px;
+  font-size: clamp(2rem, 4.6vw, 3.2rem);
+  letter-spacing: -0.03em;
+}
+
+.accent {
+  color: var(--ac);
+}
+
+.desc {
+  color: var(--tx);
+  max-width: 58ch;
+}
+
+.grid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.item {
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.item h2 {
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.item p {
+  color: var(--dim);
+  font-size: 0.86rem;
+}
+
+.foot {
+  margin-top: 22px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border);
+  color: var(--dim);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+}
+
+.foot a {
+  color: var(--ac);
+  text-decoration: none;
+}
+
+.foot a:hover {
+  text-decoration: underline;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.24);
+    opacity: 0.55;
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(12px);
+  }
+}
+
+@media (max-width: 760px) {
+  .card {
+    padding: 22px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+</head>
+<body>
+  <main class="page">
+    <section class="card" aria-label="Coming soon announcement">
+      <div class="logo">
+        <span class="dot" aria-hidden="true"></span>
+        SwimFlow
+      </div>
+
+      <p class="badge">Coming soon</p>
+      <h1>Something <span class="accent">fast</span> is shipping.</h1>
+      <p class="desc">
+        SwimFlow builder is currently in final polish mode. We are tuning performance,
+        refining UX details, and preparing public access.
+      </p>
+
+      <div class="grid" aria-label="What to expect">
+        <article class="item">
+          <h2>Visual + Code</h2>
+          <p>Switch between drag-and-drop and syntax editor with live sync.</p>
+        </article>
+        <article class="item">
+          <h2>Export Ready</h2>
+          <p>Download clean SVG and crisp PNG files in one click.</p>
+        </article>
+        <article class="item">
+          <h2>No Sign-up</h2>
+          <p>Open the app, create diagrams, and export instantly.</p>
+        </article>
+      </div>
+
+      <p class="foot">
+        Need the full product page? Visit <a href="/">index.html</a>
+      </p>
+    </section>
+  </main>
+</body>
+</html>

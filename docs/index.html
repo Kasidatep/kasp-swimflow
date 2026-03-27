@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Documentation | SwimFlow</title>
+<meta name="description" content="Official SwimFlow docs: syntax, workflow, shortcuts, and export guide.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://swimflow.memolab.me/docs/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #06080f;
+  --bg2: #0c0f1a;
+  --bg3: #111520;
+  --border: #1a2235;
+  --border2: #222d45;
+  --ac: #4f9eff;
+  --ac2: #7c5cfc;
+  --gr: #2ecc8a;
+  --tx: #c0cfe8;
+  --dim: #485870;
+  --br: #e8f0ff;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--tx); font-family: "Inter", sans-serif; line-height: 1.65; }
+h1,h2,h3 { font-family: "Syne", sans-serif; color: var(--br); line-height: 1.2; }
+a { color: var(--ac); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code { font-family: "JetBrains Mono", monospace; font-size: .86em; color: #9dd5ff; background: rgba(79,158,255,.1); padding: 2px 6px; border-radius: 4px; }
+.container { max-width: 1060px; margin: 0 auto; padding: 0 22px; }
+nav { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid var(--border); background: rgba(6,8,15,.86); backdrop-filter: blur(18px); }
+.navInner { min-height: 62px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.logo { font-family: "Syne", sans-serif; font-size: 20px; font-weight: 800; color: var(--br); }
+.logo span { color: var(--ac); }
+.links { display: flex; gap: 14px; font-size: 14px; }
+main { padding: 46px 0 72px; }
+.hero { border: 1px solid rgba(79,158,255,.28); border-radius: 16px; padding: 28px; margin-bottom: 18px; background: linear-gradient(140deg, rgba(79,158,255,.12), rgba(124,92,252,.08)); }
+.hero h1 { font-size: clamp(2rem, 4.5vw, 3rem); margin-bottom: 8px; }
+.grid { display: grid; grid-template-columns: 280px 1fr; gap: 16px; }
+.toc, .panel { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; }
+.toc { padding: 14px; position: sticky; top: 78px; height: fit-content; }
+.toc h2 { font-size: 1rem; margin-bottom: 8px; }
+.toc a { display: block; color: var(--dim); font-size: .9rem; padding: 6px 0; }
+.toc a:hover { color: var(--br); text-decoration: none; }
+.panel { padding: 18px; }
+.section { padding-bottom: 16px; margin-bottom: 16px; border-bottom: 1px solid var(--border); }
+.section:last-child { border-bottom: 0; margin-bottom: 0; }
+.section h2 { font-size: 1.2rem; margin-bottom: 8px; }
+.section p { font-size: .94rem; color: var(--tx); }
+.kbd { border: 1px solid var(--border2); background: var(--bg3); color: var(--br); border-radius: 6px; padding: 2px 6px; font-size: .78rem; font-family: "JetBrains Mono", monospace; }
+ul { margin: 10px 0 0 18px; display: grid; gap: 6px; }
+li { color: var(--tx); font-size: .92rem; }
+footer { margin-top: 24px; border-top: 1px solid var(--border); padding-top: 14px; color: var(--dim); font-size: 13px; }
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } .toc { position: static; } }
+@media (max-width: 640px) { .links { display: none; } .hero, .panel, .toc { padding: 14px; } }
+</style>
+</head>
+<body>
+<nav aria-label="Top navigation">
+  <div class="container navInner">
+    <a href="/" class="logo">Swim<span>Flow</span></a>
+    <div class="links">
+      <a href="/templates/">Templates</a>
+      <a href="/changelog/">Changelog</a>
+      <a href="/app/">Open App</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+  <section class="hero">
+    <h1>SwimFlow Documentation</h1>
+    <p>Everything needed to design diagrams quickly: syntax basics, editor flow, and export best practices.</p>
+  </section>
+
+  <div class="grid">
+    <aside class="toc" aria-label="Documentation table of contents">
+      <h2>Contents</h2>
+      <a href="#quick-start">Quick Start</a>
+      <a href="#syntax">Syntax Core</a>
+      <a href="#connections">Connections</a>
+      <a href="#shortcuts">Keyboard Shortcuts</a>
+      <a href="#export">Export Guide</a>
+    </aside>
+
+    <article class="panel">
+      <section id="quick-start" class="section">
+        <h2>Quick Start</h2>
+        <p>Create lanes, add nodes, connect them, and export. You can build visually or use code mode for precision.</p>
+        <ul>
+          <li>Create a lane and add process/decision nodes.</li>
+          <li>Link nodes with arrows across lanes.</li>
+          <li>Use live preview to verify flow logic.</li>
+        </ul>
+      </section>
+
+      <section id="syntax" class="section">
+        <h2>Syntax Core</h2>
+        <p>SwimFlow syntax is concise and readable. Example tokens: <code>diagram</code>, <code>lane</code>, <code>process</code>, <code>decision</code>, <code>arrow</code>.</p>
+        <ul>
+          <li><code>lane "Team A" blue</code> creates a lane.</li>
+          <li><code>process p1 "Validate request"</code> adds a node.</li>
+          <li><code>endlane</code> closes the lane block.</li>
+        </ul>
+      </section>
+
+      <section id="connections" class="section">
+        <h2>Connections</h2>
+        <p>Connections support direction and branch labels. Port-level control improves readability in dense diagrams.</p>
+        <ul>
+          <li><code>arrow a1 -> b1</code> simple link.</li>
+          <li><code>arrow d1 -> b2 YES</code> labeled branch.</li>
+          <li><code>from:right to:left</code> explicit ports.</li>
+        </ul>
+      </section>
+
+      <section id="shortcuts" class="section">
+        <h2>Keyboard Shortcuts</h2>
+        <ul>
+          <li><span class="kbd">Ctrl</span> + <span class="kbd">Z</span> undo</li>
+          <li><span class="kbd">Ctrl</span> + <span class="kbd">Y</span> redo</li>
+          <li><span class="kbd">Alt</span> + drag to pan canvas</li>
+        </ul>
+      </section>
+
+      <section id="export" class="section">
+        <h2>Export Guide</h2>
+        <p>Use SVG for docs and scalable diagrams, PNG for slides and quick sharing.</p>
+        <ul>
+          <li>SVG: best for Confluence, Notion, and print.</li>
+          <li>PNG: ideal for messaging and presentation decks.</li>
+          <li>Always check lane labels before export.</li>
+        </ul>
+      </section>
+    </article>
+  </div>
+
+  <footer>
+    © 2026 SwimFlow · <a href="/">Home</a> · <a href="/team/">Team</a> · <a href="/privacy/">Privacy</a>
+  </footer>
+</main>
+</body>
+</html>

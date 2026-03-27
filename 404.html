@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 | Page Not Found | SwimFlow</title>
+<meta name="description" content="The page you are looking for was not found. Return to SwimFlow home or open the app.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://swimflow.memolab.me/404.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #06080f;
+  --bg2: #0c0f1a;
+  --bg3: #111520;
+  --border: #1a2235;
+  --ac: #4f9eff;
+  --ac2: #7c5cfc;
+  --tx: #c0cfe8;
+  --dim: #485870;
+  --br: #e8f0ff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+  background: var(--bg);
+  color: var(--tx);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  overflow: hidden;
+}
+
+main {
+  width: min(760px, 100%);
+  background: linear-gradient(180deg, rgba(17, 21, 32, 0.96) 0%, rgba(12, 15, 26, 0.96) 100%);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 34px;
+  position: relative;
+  box-shadow: 0 34px 80px rgba(0, 0, 0, 0.6);
+}
+
+main::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--ac), var(--ac2), transparent);
+}
+
+.badge {
+  display: inline-block;
+  font-size: 12px;
+  color: var(--ac);
+  border: 1px solid rgba(79, 158, 255, 0.3);
+  background: rgba(79, 158, 255, 0.1);
+  border-radius: 999px;
+  padding: 6px 12px;
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+
+h1 {
+  font-family: "Syne", sans-serif;
+  font-size: clamp(2.2rem, 8vw, 4.2rem);
+  color: var(--br);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+h1 span { color: var(--ac); }
+
+p {
+  font-size: 1rem;
+  color: var(--tx);
+  max-width: 58ch;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+
+.btnPrimary {
+  background: var(--ac);
+  color: #fff;
+}
+
+.btnPrimary:hover {
+  filter: brightness(1.12);
+  text-decoration: none;
+}
+
+.btnGhost {
+  border: 1px solid #26324d;
+  color: var(--br);
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.btnGhost:hover {
+  background: var(--bg3);
+  text-decoration: none;
+}
+
+.hint {
+  margin-top: 18px;
+  font-size: 0.88rem;
+  color: var(--dim);
+}
+
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(10px);
+}
+
+.orb.one {
+  width: 280px;
+  height: 280px;
+  top: -120px;
+  right: -90px;
+  background: radial-gradient(circle, rgba(79, 158, 255, 0.35), transparent 70%);
+}
+
+.orb.two {
+  width: 260px;
+  height: 260px;
+  left: -100px;
+  bottom: -100px;
+  background: radial-gradient(circle, rgba(124, 92, 252, 0.28), transparent 70%);
+}
+
+@media (max-width: 640px) {
+  main { padding: 24px; }
+}
+</style>
+</head>
+<body>
+  <div class="orb one" aria-hidden="true"></div>
+  <div class="orb two" aria-hidden="true"></div>
+
+  <main aria-labelledby="notFoundHeading">
+    <p class="badge">Error 404</p>
+    <h1 id="notFoundHeading"><span>Page</span> not found</h1>
+    <p>
+      The page you requested does not exist or has been moved. You can return to the homepage or open the SwimFlow app directly.
+    </p>
+
+    <div class="actions">
+      <a href="/" class="btn btnPrimary">Go to Home</a>
+      <a href="/app/" class="btn btnGhost">Open App</a>
+    </div>
+
+    <p class="hint">If this happened from an old link, please update the URL bookmark.</p>
+  </main>
+</body>
+</html>

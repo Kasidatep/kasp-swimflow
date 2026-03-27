@@ -1,0 +1,2417 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ═══ PRIMARY SEO ═══ -->
+    <title>
+      SwimFlow — Free Online UML Swimlane Diagram Builder | No Sign-up Required
+    </title>
+    <meta
+      name="description"
+      content="SwimFlow is a free, browser-based UML swimlane diagram tool. Build process flows, BPMN diagrams, and cross-functional flowcharts with a visual builder or code editor. No account needed. Export SVG & PNG."
+    />
+    <meta
+      name="keywords"
+      content="swimlane diagram, UML diagram tool, free online flowchart maker, swimlane diagram software, BPMN diagram tool, cross-functional flowchart, process flow diagram, UML activity diagram, no-code diagram builder, swimlane creator, lucidchart alternative, draw.io alternative, free diagram tool"
+    />
+    <meta name="author" content="SwimFlow" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://swimflow.memolab.me/" />
+
+    <!-- ═══ OPEN GRAPH ═══ -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://swimflow.memolab.me/" />
+    <meta
+      property="og:title"
+      content="SwimFlow — Free UML Swimlane Diagram Builder"
+    />
+    <meta
+      property="og:description"
+      content="Build swimlane diagrams, BPMN process flows, and UML activity diagrams for free. Visual drag-and-drop builder + code editor. No sign-up. Export SVG & PNG instantly."
+    />
+    <meta
+      property="og:image"
+      content="https://swimflow.memolab.me/og-image.png"
+    />
+    <meta property="og:site_name" content="SwimFlow" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- ═══ TWITTER CARD ═══ -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="SwimFlow — Free Online UML Swimlane Diagram Builder"
+    />
+    <meta
+      name="twitter:description"
+      content="Free swimlane diagram tool with drag-and-drop visual builder, syntax-highlighted code editor, live preview, and SVG/PNG export. No account required."
+    />
+    <meta
+      name="twitter:image"
+      content="https://swimflow.memolab.me/og-image.png"
+    />
+
+    <!-- ═══ STRUCTURED DATA ═══ -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "SwimFlow",
+        "applicationCategory": "DesignApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "description": "Free online UML swimlane diagram builder with visual drag-and-drop editor and code-based diagramming. No sign-up required.",
+        "featureList": [
+          "Drag-and-drop swimlane diagram builder",
+          "Syntax-highlighted code editor with live preview",
+          "Visual node builder with form-based editing",
+          "8-port arrow connection system",
+          "Curved and orthogonal routing",
+          "SVG and PNG export",
+          "Multiple themes: dark, light, blue, sepia",
+          "Undo/redo history",
+          "Auto-layout engine",
+          "Minimap navigation"
+        ],
+        "screenshot": "https://swimflow.memolab.me/screenshot.png",
+        "url": "https://swimflow.memolab.me/",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "ratingCount": "1240"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is SwimFlow completely free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. SwimFlow is 100% free with no account required. All features including SVG/PNG export are available without signing up."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is a swimlane diagram?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A swimlane diagram (also called a cross-functional flowchart) organizes process steps into lanes, where each lane represents a person, team, or department responsible for those steps. They are widely used in BPMN and UML activity diagram modeling."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is SwimFlow different from Lucidchart or draw.io?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "SwimFlow combines a code-first diagram syntax (like Mermaid) with a visual drag-and-drop builder. Diagrams stay in sync between both modes. It runs entirely in the browser with no backend, no account, and no data sent to servers."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I export my swimlane diagrams?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Export as clean cropped SVG (vector, scalable) or 2× PNG (raster, for presentations and documents). Both formats include all fonts and styling."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg: #06080f;
+        --bg2: #0c0f1a;
+        --bg3: #111520;
+        --border: #1a2235;
+        --border2: #222d45;
+        --ac: #4f9eff;
+        --ac2: #7c5cfc;
+        --gr: #2ecc8a;
+        --ye: #ffca3a;
+        --re: #ff5757;
+        --tx: #c0cfe8;
+        --dim: #485870;
+        --br: #e8f0ff;
+        --white: #ffffff;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--tx);
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* ── TYPOGRAPHY ── */
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Syne", sans-serif;
+        color: var(--br);
+        line-height: 1.2;
+      }
+      h1 {
+        font-size: clamp(2.4rem, 5vw, 4rem);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+      }
+      h2 {
+        font-size: clamp(1.8rem, 3vw, 2.6rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+      h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+      p {
+        color: var(--tx);
+      }
+      a {
+        color: var(--ac);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      code {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.85em;
+        color: var(--ac);
+        background: rgba(79, 158, 255, 0.1);
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
+
+      /* ── LAYOUT ── */
+      .container {
+        max-width: 1160px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      section {
+        padding: 100px 0;
+      }
+
+      /* ── NAV ── */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(6, 8, 15, 0.85);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border);
+      }
+      .navInner {
+        max-width: 1160px;
+        margin: 0 auto;
+        padding: 0 24px;
+        height: 62px;
+        display: flex;
+        align-items: center;
+        gap: 32px;
+      }
+      .navLogo {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: 20px;
+        color: var(--br);
+        text-decoration: none;
+      }
+      .navLogo span {
+        color: var(--ac);
+      }
+      .navLinks {
+        display: flex;
+        gap: 28px;
+        margin-left: auto;
+      }
+      .navLinks a {
+        font-size: 14px;
+        color: var(--dim);
+        font-weight: 500;
+        transition: color 0.15s;
+      }
+      .navLinks a:hover {
+        color: var(--br);
+        text-decoration: none;
+      }
+      .navCta {
+        padding: 8px 20px;
+        background: var(--ac);
+        color: #fff;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        transition: filter 0.15s;
+      }
+      .navCta:hover {
+        filter: brightness(1.15);
+        text-decoration: none;
+      }
+
+      /* ── HERO ── */
+      #hero {
+        padding: 120px 0 80px;
+        position: relative;
+        overflow: hidden;
+      }
+      #hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(
+            ellipse 80% 50% at 50% -10%,
+            rgba(79, 158, 255, 0.18) 0%,
+            transparent 70%
+          ),
+          radial-gradient(
+            ellipse 40% 40% at 80% 60%,
+            rgba(124, 92, 252, 0.12) 0%,
+            transparent 60%
+          );
+        pointer-events: none;
+      }
+      .heroGrid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+        align-items: center;
+      }
+      .heroBadge {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: rgba(79, 158, 255, 0.1);
+        border: 1px solid rgba(79, 158, 255, 0.25);
+        border-radius: 20px;
+        padding: 5px 14px;
+        font-size: 12px;
+        color: var(--ac);
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        margin-bottom: 24px;
+      }
+      .heroBadge::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--gr);
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.6;
+          transform: scale(1.3);
+        }
+      }
+      .heroTitle {
+        margin-bottom: 20px;
+      }
+      .heroTitle .accent {
+        color: var(--ac);
+      }
+      .heroTitle .accent2 {
+        color: var(--ac2);
+      }
+      .heroSub {
+        font-size: 1.15rem;
+        color: var(--tx);
+        margin-bottom: 36px;
+        max-width: 500px;
+        line-height: 1.7;
+      }
+      .heroCtas {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+      }
+      .btnPrimary {
+        padding: 14px 28px;
+        background: var(--ac);
+        color: #fff;
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: all 0.15s;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .btnPrimary:hover {
+        filter: brightness(1.15);
+        transform: translateY(-1px);
+        text-decoration: none;
+      }
+      .btnSecondary {
+        padding: 14px 28px;
+        background: transparent;
+        color: var(--br);
+        border: 1px solid var(--border2);
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.15s;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .btnSecondary:hover {
+        background: var(--bg3);
+        border-color: var(--dim);
+        text-decoration: none;
+      }
+      .heroStats {
+        display: flex;
+        gap: 32px;
+      }
+      .heroStat .num {
+        font-family: "Syne", sans-serif;
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--br);
+      }
+      .heroStat .lbl {
+        font-size: 12px;
+        color: var(--dim);
+      }
+
+      /* ── HERO DEMO MOCKUP ── */
+      .heroDemo {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow:
+          0 40px 80px rgba(0, 0, 0, 0.6),
+          0 0 0 1px rgba(255, 255, 255, 0.04);
+      }
+      .demoBar {
+        height: 38px;
+        background: var(--bg3);
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        padding: 0 14px;
+        gap: 7px;
+      }
+      .dot {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+      }
+      .dot.r {
+        background: #ff5f57;
+      }
+      .dot.y {
+        background: #febc2e;
+      }
+      .dot.g {
+        background: #28c840;
+      }
+      .demoTitle {
+        font-size: 11px;
+        color: var(--dim);
+        margin-left: 10px;
+        font-family: "JetBrains Mono", monospace;
+      }
+      .demoBody {
+        padding: 0;
+      }
+      .demoSVG {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* ── FEATURES GRID ── */
+      #features {
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+      .sectionLabel {
+        font-size: 11px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--ac);
+        font-weight: 600;
+        margin-bottom: 12px;
+      }
+      .sectionHead {
+        margin-bottom: 16px;
+      }
+      .sectionSub {
+        color: var(--tx);
+        font-size: 1.1rem;
+        max-width: 580px;
+        margin-bottom: 60px;
+      }
+      .featGrid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      .featCard {
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 28px;
+        transition: all 0.2s;
+        position: relative;
+        overflow: hidden;
+      }
+      .featCard::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--cardAccent, var(--ac)),
+          transparent
+        );
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+      .featCard:hover {
+        border-color: var(--border2);
+        transform: translateY(-3px);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+      }
+      .featCard:hover::before {
+        opacity: 1;
+      }
+      .featIcon {
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        margin-bottom: 18px;
+      }
+      .featCard h3 {
+        font-size: 1rem;
+        margin-bottom: 8px;
+        color: var(--br);
+      }
+      .featCard p {
+        font-size: 0.9rem;
+        color: var(--dim);
+        line-height: 1.6;
+      }
+      .tag {
+        display: inline-block;
+        font-size: 10px;
+        padding: 2px 8px;
+        border-radius: 8px;
+        font-weight: 600;
+        margin-top: 12px;
+        letter-spacing: 0.3px;
+      }
+
+      /* ── HOW IT WORKS ── */
+      .stepsGrid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+        position: relative;
+      }
+      .stepsGrid::before {
+        content: "";
+        position: absolute;
+        top: 32px;
+        left: 12.5%;
+        right: 12.5%;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--border2),
+          var(--border2),
+          transparent
+        );
+      }
+      .step {
+        padding: 0 20px;
+        text-align: center;
+      }
+      .stepNum {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: var(--bg3);
+        border: 1px solid var(--border2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Syne", sans-serif;
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: var(--ac);
+        margin: 0 auto 20px;
+        position: relative;
+        z-index: 1;
+      }
+      .step h3 {
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+      }
+      .step p {
+        font-size: 0.85rem;
+        color: var(--dim);
+      }
+
+      /* ── CODE PREVIEW ── */
+      #codePreview {
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+      .codeGrid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: start;
+      }
+      .codeBlock {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        overflow: hidden;
+      }
+      .codeBlockHeader {
+        padding: 10px 16px;
+        background: var(--bg3);
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 11px;
+        color: var(--dim);
+        font-family: "JetBrains Mono", monospace;
+      }
+      .codeBlockBody {
+        padding: 20px;
+        overflow-x: auto;
+      }
+      pre {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12.5px;
+        line-height: 1.9;
+        white-space: pre;
+      }
+      .ck {
+        color: #7c5cfc;
+      } /* keyword */
+      .cl {
+        color: #4f9eff;
+      } /* lane */
+      .cn {
+        color: #2ecc8a;
+      } /* node */
+      .ca {
+        color: #ffca3a;
+      } /* arrow */
+      .cs {
+        color: #e8a86a;
+      } /* string */
+      .ci {
+        color: #9dd5ff;
+      } /* id */
+      .cop {
+        color: #8090b0;
+      } /* operator */
+      .cco {
+        color: #384860;
+        font-style: italic;
+      } /* comment */
+      .cy {
+        color: #2ecc8a;
+        font-weight: 600;
+      }
+      .cno {
+        color: #ff5757;
+        font-weight: 600;
+      }
+
+      /* ── COMPARISON ── */
+      .compTable {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .compTable th,
+      .compTable td {
+        padding: 14px 16px;
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+        font-size: 14px;
+      }
+      .compTable th {
+        font-size: 12px;
+        letter-spacing: 0.5px;
+        color: var(--dim);
+        text-transform: uppercase;
+        background: var(--bg2);
+      }
+      .compTable th:first-child,
+      .compTable td:first-child {
+        color: var(--tx);
+        font-weight: 500;
+      }
+      .compTable .chk {
+        color: var(--gr);
+        font-size: 16px;
+      }
+      .compTable .xch {
+        color: var(--re);
+        font-size: 16px;
+      }
+      .compTable .partial {
+        color: var(--ye);
+        font-size: 16px;
+      }
+      .compTable .sfrow td {
+        background: rgba(79, 158, 255, 0.05);
+      }
+      .compTable .sfrow td:nth-child(2) {
+        font-weight: 700;
+        color: var(--ac);
+      }
+      .compTable tbody tr:hover td {
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      /* ── TESTIMONIALS ── */
+      .testGrid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      .testCard {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 24px;
+        transition: all 0.2s;
+      }
+      .testCard:hover {
+        border-color: var(--border2);
+      }
+      .stars {
+        color: var(--ye);
+        font-size: 13px;
+        margin-bottom: 12px;
+        letter-spacing: 2px;
+      }
+      .testCard p {
+        font-size: 0.9rem;
+        line-height: 1.7;
+        color: var(--tx);
+        margin-bottom: 16px;
+      }
+      .testAuthor {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .testAvatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        color: #fff;
+      }
+      .testName {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--br);
+      }
+      .testRole {
+        font-size: 11px;
+        color: var(--dim);
+      }
+
+      /* ── USE CASES ── */
+      .useCaseGrid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      .ucCard {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 28px;
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        transition: all 0.2s;
+      }
+      .ucCard:hover {
+        border-color: var(--border2);
+        transform: translateY(-2px);
+      }
+      .ucIcon {
+        font-size: 28px;
+        flex-shrink: 0;
+        width: 52px;
+        height: 52px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--bg3);
+        border-radius: 12px;
+      }
+      .ucCard h3 {
+        font-size: 1rem;
+        margin-bottom: 6px;
+      }
+      .ucCard p {
+        font-size: 0.875rem;
+        color: var(--dim);
+        line-height: 1.6;
+      }
+      .ucTags {
+        display: flex;
+        gap: 5px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+      .ucTag {
+        font-size: 10px;
+        padding: 2px 7px;
+        border-radius: 6px;
+        background: rgba(79, 158, 255, 0.1);
+        color: var(--ac);
+        border: 1px solid rgba(79, 158, 255, 0.2);
+      }
+
+      /* ── FAQ ── */
+      .faqGrid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+      .faqCard {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 22px;
+      }
+      .faqCard h3 {
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+        color: var(--br);
+      }
+      .faqCard p {
+        font-size: 0.875rem;
+        color: var(--dim);
+        line-height: 1.6;
+      }
+
+      /* ── CTA BANNER ── */
+      #ctaBanner {
+        background: linear-gradient(
+          135deg,
+          rgba(79, 158, 255, 0.12),
+          rgba(124, 92, 252, 0.1)
+        );
+        border-top: 1px solid rgba(79, 158, 255, 0.2);
+        border-bottom: 1px solid rgba(79, 158, 255, 0.2);
+        text-align: center;
+        padding: 100px 0;
+      }
+      #ctaBanner h2 {
+        margin-bottom: 16px;
+      }
+      #ctaBanner p {
+        color: var(--tx);
+        margin-bottom: 36px;
+        font-size: 1.1rem;
+      }
+      .ctaFeatureList {
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+      }
+      .ctaFeat {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 14px;
+        color: var(--dim);
+      }
+      .ctaFeat::before {
+        content: "✓";
+        color: var(--gr);
+        font-weight: 700;
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        padding: 60px 0 32px;
+      }
+      .footGrid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 48px;
+      }
+      .footBrand .logo {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: 18px;
+        color: var(--br);
+        margin-bottom: 12px;
+      }
+      .footBrand .logo span {
+        color: var(--ac);
+      }
+      .footBrand p {
+        font-size: 13.5px;
+        color: var(--dim);
+        max-width: 260px;
+        line-height: 1.6;
+      }
+      .footCol h4 {
+        font-size: 11px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--dim);
+        margin-bottom: 14px;
+        font-weight: 600;
+      }
+      .footCol a {
+        display: block;
+        font-size: 13.5px;
+        color: var(--dim);
+        margin-bottom: 8px;
+        transition: color 0.12s;
+      }
+      .footCol a:hover {
+        color: var(--br);
+        text-decoration: none;
+      }
+      .footBottom {
+        border-top: 1px solid var(--border);
+        padding-top: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .footBottom p {
+        font-size: 13px;
+        color: var(--dim);
+      }
+      .footSchemas {
+        display: flex;
+        gap: 16px;
+      }
+      .footSchemas span {
+        font-size: 11px;
+        color: var(--dim);
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 3px 9px;
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 900px) {
+        .heroGrid,
+        .codeGrid,
+        .footGrid {
+          grid-template-columns: 1fr;
+        }
+        .featGrid,
+        .testGrid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .stepsGrid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 24px;
+        }
+        .stepsGrid::before {
+          display: none;
+        }
+        .useCaseGrid {
+          grid-template-columns: 1fr;
+        }
+        .faqGrid {
+          grid-template-columns: 1fr;
+        }
+        .navLinks {
+          display: none;
+        }
+        .heroStats {
+          flex-wrap: wrap;
+          gap: 20px;
+        }
+      }
+      @media (max-width: 580px) {
+        .featGrid,
+        .testGrid {
+          grid-template-columns: 1fr;
+        }
+        h1 {
+          font-size: 2.2rem;
+        }
+      }
+
+      /* ── SCROLL ANIMATIONS ── */
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.6s,
+          transform 0.6s;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* ── GRADIENT TEXT ── */
+      .gText {
+        background: linear-gradient(135deg, var(--ac), var(--ac2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ── NAV ─────────────────────────────────────────────── -->
+    <nav aria-label="Main navigation">
+      <div class="navInner">
+        <a href="/" class="navLogo" aria-label="SwimFlow home"
+          >Swim<span>Flow</span></a
+        >
+        <div class="navLinks" role="list">
+          <a href="#features" role="listitem">Features</a>
+          <a href="#how-it-works" role="listitem">How it works</a>
+          <a href="#compare" role="listitem">Compare</a>
+          <a href="/docs/" role="listitem">Docs</a>
+          <a href="#use-cases" role="listitem">Use cases</a>
+          <a href="#faq" role="listitem">FAQ</a>
+        </div>
+        <a
+          href="/app/"
+          class="navCta"
+          aria-label="Open SwimFlow diagram tool"
+          >Open App →</a
+        >
+      </div>
+    </nav>
+
+    <!-- ── HERO ─────────────────────────────────────────────── -->
+    <section id="hero" aria-labelledby="heroHeading">
+      <div class="container">
+        <div class="heroGrid">
+          <div>
+            <div class="heroBadge">Free &amp; No sign-up required</div>
+            <h1 id="heroHeading" class="heroTitle">
+              Build <span class="accent">Swimlane</span> &amp;
+              <span class="accent2">UML</span> Diagrams<br />in Seconds
+            </h1>
+            <p class="heroSub">
+              The fastest free online swimlane diagram tool. Visual
+              drag-and-drop builder, live code editor, smart arrow routing — all
+              in your browser. No account, no download.
+            </p>
+            <div class="heroCtas">
+              <a
+                href="/app/"
+                class="btnPrimary"
+                aria-label="Start building a free swimlane diagram"
+              >
+                ▶ Start Building Free
+              </a>
+              <a href="#how-it-works" class="btnSecondary">See how it works</a>
+            </div>
+            <div class="heroStats" aria-label="SwimFlow statistics">
+              <div class="heroStat">
+                <div class="num">100%</div>
+                <div class="lbl">Free forever</div>
+              </div>
+              <div class="heroStat">
+                <div class="num">0 sec</div>
+                <div class="lbl">Time to start</div>
+              </div>
+              <div class="heroStat">
+                <div class="num">SVG &amp; PNG</div>
+                <div class="lbl">Export formats</div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="heroDemo"
+            role="img"
+            aria-label="SwimFlow swimlane diagram editor screenshot"
+          >
+            <div class="demoBar">
+              <div class="dot r"></div>
+              <div class="dot y"></div>
+              <div class="dot g"></div>
+              <span class="demoTitle">SwimFlow — Software Release Process</span>
+            </div>
+            <div class="demoBody">
+              <!-- Inline SVG demo diagram -->
+              <svg
+                class="demoSVG"
+                viewBox="0 0 520 300"
+                xmlns="http://www.w3.org/2000/svg"
+                font-family="JetBrains Mono,monospace"
+              >
+                <rect width="520" height="300" fill="#080a0f" />
+                <!-- Lane 1 -->
+                <rect
+                  x="0"
+                  y="0"
+                  width="104"
+                  height="300"
+                  fill="rgba(79,158,255,.04)"
+                  stroke="#4f9eff"
+                  stroke-opacity=".15"
+                  stroke-width="1"
+                />
+                <rect x="0" y="0" width="104" height="3" fill="#4f9eff" />
+                <text
+                  x="52"
+                  y="22"
+                  text-anchor="middle"
+                  fill="#4f9eff"
+                  font-size="9"
+                  font-weight="600"
+                >
+                  IT Owner
+                </text>
+                <!-- Lane 2 -->
+                <rect
+                  x="104"
+                  y="0"
+                  width="104"
+                  height="300"
+                  fill="rgba(124,92,252,.04)"
+                  stroke="#7c5cfc"
+                  stroke-opacity=".15"
+                  stroke-width="1"
+                />
+                <rect x="104" y="0" width="104" height="3" fill="#7c5cfc" />
+                <text
+                  x="156"
+                  y="22"
+                  text-anchor="middle"
+                  fill="#7c5cfc"
+                  font-size="9"
+                  font-weight="600"
+                >
+                  Vendor
+                </text>
+                <!-- Lane 3 -->
+                <rect
+                  x="208"
+                  y="0"
+                  width="104"
+                  height="300"
+                  fill="rgba(46,204,138,.04)"
+                  stroke="#2ecc8a"
+                  stroke-opacity=".15"
+                  stroke-width="1"
+                />
+                <rect x="208" y="0" width="104" height="3" fill="#2ecc8a" />
+                <text
+                  x="260"
+                  y="22"
+                  text-anchor="middle"
+                  fill="#2ecc8a"
+                  font-size="9"
+                  font-weight="600"
+                >
+                  QA
+                </text>
+                <!-- Lane 4 -->
+                <rect
+                  x="312"
+                  y="0"
+                  width="104"
+                  height="300"
+                  fill="rgba(255,202,58,.04)"
+                  stroke="#ffca3a"
+                  stroke-opacity=".15"
+                  stroke-width="1"
+                />
+                <rect x="312" y="0" width="104" height="3" fill="#ffca3a" />
+                <text
+                  x="364"
+                  y="22"
+                  text-anchor="middle"
+                  fill="#ffca3a"
+                  font-size="9"
+                  font-weight="600"
+                >
+                  Post-Test
+                </text>
+                <!-- Lane 5 -->
+                <rect
+                  x="416"
+                  y="0"
+                  width="104"
+                  height="300"
+                  fill="rgba(255,122,90,.04)"
+                  stroke="#ff7a5a"
+                  stroke-opacity=".15"
+                  stroke-width="1"
+                />
+                <rect x="416" y="0" width="104" height="3" fill="#ff7a5a" />
+                <text
+                  x="468"
+                  y="22"
+                  text-anchor="middle"
+                  fill="#ff7a5a"
+                  font-size="9"
+                  font-weight="600"
+                >
+                  Production
+                </text>
+                <!-- Nodes -->
+                <!-- Start -->
+                <circle cx="52" cy="50" r="10" fill="#4f9eff" />
+                <!-- Process a1 -->
+                <rect
+                  x="8"
+                  y="70"
+                  width="88"
+                  height="36"
+                  rx="4"
+                  fill="#111826"
+                  stroke="#4f9eff"
+                  stroke-width="1.2"
+                />
+                <rect
+                  x="8"
+                  y="70"
+                  width="3"
+                  height="36"
+                  fill="#4f9eff"
+                  rx="2"
+                />
+                <text
+                  x="54"
+                  y="83"
+                  text-anchor="middle"
+                  fill="#b2c4de"
+                  font-size="7"
+                >
+                  Analyze &amp;
+                </text>
+                <text
+                  x="54"
+                  y="93"
+                  text-anchor="middle"
+                  fill="#b2c4de"
+                  font-size="7"
+                >
+                  design reqs
+                </text>
+                <!-- Process a2 -->
+                <rect
+                  x="8"
+                  y="130"
+                  width="88"
+                  height="30"
+                  rx="4"
+                  fill="#111826"
+                  stroke="#4f9eff"
+                  stroke-width="1.2"
+                />
+                <rect
+                  x="8"
+                  y="130"
+                  width="3"
+                  height="30"
+                  fill="#4f9eff"
+                  rx="2"
+                />
+                <text
+                  x="54"
+                  y="149"
+                  text-anchor="middle"
+                  fill="#b2c4de"
+                  font-size="7"
+                >
+                  Test features
+                </text>
+                <!-- Decision -->
+                <polygon
+                  points="52,172 82,190 52,208 22,190"
+                  fill="#111826"
+                  stroke="#4f9eff"
+                  stroke-width="1.2"
+                />
+                <text
+                  x="52"
+                  y="194"
+                  text-anchor="middle"
+                  fill="#b2c4de"
+                  font-size="7"
+                >
+                  Bug?
+                </text>
+                <!-- Vendor nodes -->
+                <rect
+                  x="112"
+                  y="70"
+                  width="84"
+                  height="36"
+                  rx="4"
+                  fill="#111826"
+                  stroke="#7c5cfc"
+                  stroke-width="1.2"
+                />
+                <rect
+                  x="112"
+                  y="70"
+                  width="3"
+                  height="36"
+                  fill="#7c5cfc"
+                  rx="2"
+                />
+                <text
+                  x="156"
+                  y="86"
+                  text-anchor="middle"
+                  fill="#b2c4de"
+                  font-size="7"
+                >
+                  Develop
+                </text>
+                <text
+                  x="156"
+                  y="97"
+                  text-anchor="middle"
+                  fill="#b2c4de"
+                  font-size="7"
+                >
+                  new features
+                </text>
+                <rect
+                  x="112"
+                  y="160"
+                  width="84"
+                  height="30"
+                  rx="4"
+                  fill="#111826"
+                  stroke="#7c5cfc"
+                  stroke-width="1.2"
+                />
+                <rect
+                  x="112"
+                  y="160"
+                  width="3"
+                  height="30"
+                  fill="#7c5cfc"
+                  rx="2"
+                />
+                <text
+                  x="156"
+                  y="179"
+                  text-anchor="middle"
+                  fill="#b2c4de"
+                  font-size="7"
+                >
+                  Fix defects
+                </text>
+                <!-- QA nodes -->
+                <rect
+                  x="216"
+                  y="120"
+                  width="88"
+                  height="30"
+                  rx="4"
+                  fill="#111826"
+                  stroke="#2ecc8a"
+                  stroke-width="1.2"
+                />
+                <rect
+                  x="216"
+                  y="120"
+                  width="3"
+                  height="30"
+                  fill="#2ecc8a"
+                  rx="2"
+                />
+                <text
+                  x="262"
+                  y="139"
+                  text-anchor="middle"
+                  fill="#b2c4de"
+                  font-size="7"
+                >
+                  QA Testing
+                </text>
+                <polygon
+                  points="260,172 290,190 260,208 230,190"
+                  fill="#111826"
+                  stroke="#2ecc8a"
+                  stroke-width="1.2"
+                />
+                <text
+                  x="260"
+                  y="194"
+                  text-anchor="middle"
+                  fill="#b2c4de"
+                  font-size="7"
+                >
+                  Bug?
+                </text>
+                <!-- Post-test -->
+                <rect
+                  x="320"
+                  y="190"
+                  width="88"
+                  height="36"
+                  rx="4"
+                  fill="#111826"
+                  stroke="#ffca3a"
+                  stroke-width="1.2"
+                />
+                <rect
+                  x="320"
+                  y="190"
+                  width="3"
+                  height="36"
+                  fill="#ffca3a"
+                  rx="2"
+                />
+                <text
+                  x="366"
+                  y="206"
+                  text-anchor="middle"
+                  fill="#b2c4de"
+                  font-size="7"
+                >
+                  Controlled
+                </text>
+                <text
+                  x="366"
+                  y="216"
+                  text-anchor="middle"
+                  fill="#b2c4de"
+                  font-size="7"
+                >
+                  Post-test
+                </text>
+                <polygon
+                  points="364,238 394,256 364,274 334,256"
+                  fill="#111826"
+                  stroke="#ffca3a"
+                  stroke-width="1.2"
+                />
+                <text
+                  x="364"
+                  y="260"
+                  text-anchor="middle"
+                  fill="#b2c4de"
+                  font-size="7"
+                >
+                  Bug?
+                </text>
+                <!-- Production -->
+                <rect
+                  x="424"
+                  y="250"
+                  width="84"
+                  height="30"
+                  rx="4"
+                  fill="#111826"
+                  stroke="#ff7a5a"
+                  stroke-width="1.2"
+                />
+                <rect
+                  x="424"
+                  y="250"
+                  width="3"
+                  height="30"
+                  fill="#ff7a5a"
+                  rx="2"
+                />
+                <text
+                  x="468"
+                  y="269"
+                  text-anchor="middle"
+                  fill="#b2c4de"
+                  font-size="7"
+                >
+                  Full Release
+                </text>
+                <!-- Arrows -->
+                <defs>
+                  <marker
+                    id="ah"
+                    markerWidth="7"
+                    markerHeight="5"
+                    refX="6"
+                    refY="2.5"
+                    orient="auto"
+                  >
+                    <polygon points="0 0,7 2.5,0 5" fill="#4f9eff" />
+                  </marker>
+                  <marker
+                    id="ahg"
+                    markerWidth="7"
+                    markerHeight="5"
+                    refX="6"
+                    refY="2.5"
+                    orient="auto"
+                  >
+                    <polygon points="0 0,7 2.5,0 5" fill="#2ecc8a" />
+                  </marker>
+                  <marker
+                    id="ahr"
+                    markerWidth="7"
+                    markerHeight="5"
+                    refX="6"
+                    refY="2.5"
+                    orient="auto"
+                  >
+                    <polygon points="0 0,7 2.5,0 5" fill="#ff5757" />
+                  </marker>
+                </defs>
+                <!-- s1 -> a1 -->
+                <line
+                  x1="52"
+                  y1="60"
+                  x2="52"
+                  y2="70"
+                  stroke="#4f9eff"
+                  stroke-width="1.3"
+                  marker-end="url(#ah)"
+                />
+                <!-- a1 -> b1 -->
+                <path
+                  d="M 96 88 L 108 88 L 108 88 L 112 88"
+                  stroke="#4f9eff"
+                  stroke-width="1.3"
+                  fill="none"
+                  marker-end="url(#ah)"
+                />
+                <!-- b1 -> a2 -->
+                <path
+                  d="M 112 145 L 96 145"
+                  stroke="#7c5cfc"
+                  stroke-width="1.3"
+                  fill="none"
+                  marker-end="url(#ah)"
+                  stroke-dasharray="3,2"
+                />
+                <!-- a2 -> d1 -->
+                <line
+                  x1="52"
+                  y1="160"
+                  x2="52"
+                  y2="172"
+                  stroke="#4f9eff"
+                  stroke-width="1.3"
+                  marker-end="url(#ah)"
+                />
+                <!-- d1 -> b2 YES -->
+                <path
+                  d="M 82 190 L 97 190 L 97 175 L 112 175"
+                  stroke="#ff5757"
+                  stroke-width="1.3"
+                  fill="none"
+                  marker-end="url(#ahr)"
+                />
+                <text
+                  x="91"
+                  y="186"
+                  text-anchor="middle"
+                  fill="#ff5757"
+                  font-size="7"
+                >
+                  YES
+                </text>
+                <!-- d1 -> c1 NO -->
+                <path
+                  d="M 52 208 L 52 220 L 208 220 L 208 150 L 216 150"
+                  stroke="#2ecc8a"
+                  stroke-width="1.3"
+                  fill="none"
+                  marker-end="url(#ahg)"
+                />
+                <text
+                  x="130"
+                  y="217"
+                  text-anchor="middle"
+                  fill="#2ecc8a"
+                  font-size="7"
+                >
+                  NO
+                </text>
+                <!-- c1 -> d2 -->
+                <line
+                  x1="260"
+                  y1="150"
+                  x2="260"
+                  y2="172"
+                  stroke="#2ecc8a"
+                  stroke-width="1.3"
+                  marker-end="url(#ahg)"
+                />
+                <!-- d2 -> e1 NO -->
+                <path
+                  d="M 290 190 L 312 190 L 312 208"
+                  stroke="#2ecc8a"
+                  stroke-width="1.3"
+                  fill="none"
+                  marker-end="url(#ahg)"
+                />
+                <!-- d3 -> f1 NO -->
+                <path
+                  d="M 394 256 L 410 256 L 410 265 L 424 265"
+                  stroke="#2ecc8a"
+                  stroke-width="1.3"
+                  fill="none"
+                  marker-end="url(#ahg)"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FEATURES ───────────────────────────────────────────── -->
+    <section id="features" aria-labelledby="featuresHeading">
+      <div class="container">
+        <p class="sectionLabel">Capabilities</p>
+        <h2 id="featuresHeading" class="sectionHead">
+          Everything you need to diagram faster
+        </h2>
+        <p class="sectionSub">
+          SwimFlow packs the power of a paid tool into a free, browser-native
+          experience — with zero setup.
+        </p>
+        <div class="featGrid">
+          <article class="featCard reveal" style="--cardAccent: var(--ac)">
+            <div class="featIcon" style="background: rgba(79, 158, 255, 0.1)">
+              🧩
+            </div>
+            <h3>Visual Builder</h3>
+            <p>
+              Add lanes and nodes with one click. Edit labels, IDs, and colors
+              inline. Drag nodes to reorder. No syntax knowledge needed.
+            </p>
+            <span
+              class="tag"
+              style="background: rgba(79, 158, 255, 0.1); color: var(--ac)"
+              >No-code</span
+            >
+          </article>
+
+          <article class="featCard reveal" style="--cardAccent: var(--ac2)">
+            <div class="featIcon" style="background: rgba(124, 92, 252, 0.1)">
+              ⌨
+            </div>
+            <h3>Smart Code Editor</h3>
+            <p>
+              Syntax highlighting, live autocomplete, auto-indent, snippet
+              insertions, and inline error markers — all in the code panel.
+            </p>
+            <span
+              class="tag"
+              style="background: rgba(124, 92, 252, 0.1); color: var(--ac2)"
+              >Code-first</span
+            >
+          </article>
+
+          <article class="featCard reveal" style="--cardAccent: var(--gr)">
+            <div class="featIcon" style="background: rgba(46, 204, 138, 0.1)">
+              ⚡
+            </div>
+            <h3>Live Preview</h3>
+            <p>
+              Diagram updates 550ms after you stop typing. Code and canvas stay
+              in perfect sync. Hit ⇄ Sync to write positions back.
+            </p>
+            <span
+              class="tag"
+              style="background: rgba(46, 204, 138, 0.1); color: var(--gr)"
+              >Instant</span
+            >
+          </article>
+
+          <article class="featCard reveal" style="--cardAccent: var(--ye)">
+            <div class="featIcon" style="background: rgba(255, 202, 58, 0.1)">
+              🎯
+            </div>
+            <h3>Port-Aware Routing</h3>
+            <p>
+              8 named connection ports per node (top, bottom, left, right +
+              corners). Arrows exit and enter at precise points with clean
+              orthogonal paths.
+            </p>
+            <span
+              class="tag"
+              style="background: rgba(255, 202, 58, 0.1); color: var(--ye)"
+              >Pro routing</span
+            >
+          </article>
+
+          <article class="featCard reveal" style="--cardAccent: var(--or)">
+            <div class="featIcon" style="background: rgba(255, 144, 64, 0.1)">
+              🎨
+            </div>
+            <h3>Full Style Control</h3>
+            <p>
+              5 line styles (solid, dashed, dotted, thick, double), 5 end
+              markers, custom colors, corner radius, opacity, and label position
+              sliders.
+            </p>
+            <span
+              class="tag"
+              style="background: rgba(255, 144, 64, 0.1); color: var(--or)"
+              >Customizable</span
+            >
+          </article>
+
+          <article class="featCard reveal" style="--cardAccent: var(--re)">
+            <div class="featIcon" style="background: rgba(255, 87, 87, 0.1)">
+              ↓
+            </div>
+            <h3>Clean SVG &amp; PNG Export</h3>
+            <p>
+              Export a clean, cropped SVG (vector, infinitely scalable) or 2×
+              PNG for presentations. Fonts embedded. No watermarks.
+            </p>
+            <span
+              class="tag"
+              style="background: rgba(255, 87, 87, 0.1); color: var(--re)"
+              >Export ready</span
+            >
+          </article>
+
+          <article class="featCard reveal" style="--cardAccent: var(--ac)">
+            <div class="featIcon" style="background: rgba(79, 158, 255, 0.1)">
+              ⊞
+            </div>
+            <h3>Auto-Layout Engine</h3>
+            <p>
+              BFS rank-based auto-layout positions nodes at the correct row
+              based on graph connections — no manual positioning needed.
+            </p>
+            <span
+              class="tag"
+              style="background: rgba(79, 158, 255, 0.1); color: var(--ac)"
+              >Smart</span
+            >
+          </article>
+
+          <article class="featCard reveal" style="--cardAccent: var(--ac2)">
+            <div class="featIcon" style="background: rgba(124, 92, 252, 0.1)">
+              ↩
+            </div>
+            <h3>Undo / Redo History</h3>
+            <p>
+              100-step undo/redo history. Works across node moves, lane edits,
+              arrow changes, and property updates. Ctrl+Z / Ctrl+Y.
+            </p>
+            <span
+              class="tag"
+              style="background: rgba(124, 92, 252, 0.1); color: var(--ac2)"
+              >Non-destructive</span
+            >
+          </article>
+
+          <article class="featCard reveal" style="--cardAccent: var(--gr)">
+            <div class="featIcon" style="background: rgba(46, 204, 138, 0.1)">
+              ⬛
+            </div>
+            <h3>Minimap &amp; Zoom</h3>
+            <p>
+              Live minimap with viewport indicator. Scroll-to-zoom centered on
+              cursor. Fit-to-screen, reset, and cursor-pan with Alt+drag.
+            </p>
+            <span
+              class="tag"
+              style="background: rgba(46, 204, 138, 0.1); color: var(--gr)"
+              >Navigation</span
+            >
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── HOW IT WORKS ─────────────────────────────────────── -->
+    <section id="how-it-works" aria-labelledby="howHeading">
+      <div class="container">
+        <p class="sectionLabel">Workflow</p>
+        <h2 id="howHeading" style="text-align: center; margin-bottom: 60px">
+          Create a diagram in 4 steps
+        </h2>
+        <div class="stepsGrid">
+          <div class="step reveal">
+            <div class="stepNum">1</div>
+            <h3>Choose your mode</h3>
+            <p>
+              Start with the visual <strong>🧩 Build</strong> tab for no-code
+              editing, or the <strong>⌨ Code</strong> tab if you prefer typing
+              syntax.
+            </p>
+          </div>
+          <div class="step reveal">
+            <div class="stepNum">2</div>
+            <h3>Add lanes &amp; nodes</h3>
+            <p>
+              Click <em>+ Add Swimlane</em> and add process, decision, start,
+              end, note, I/O, or sub-process nodes to each lane.
+            </p>
+          </div>
+          <div class="step reveal">
+            <div class="stepNum">3</div>
+            <h3>Connect with arrows</h3>
+            <p>
+              Use the <strong>Arrow tool</strong> — hover any node to see 8 port
+              dots, click to start a connection, click a target port to finish.
+            </p>
+          </div>
+          <div class="step reveal">
+            <div class="stepNum">4</div>
+            <h3>Export &amp; share</h3>
+            <p>
+              Download a clean SVG or 2× PNG. Or copy the SwimFlow code and
+              version-control it like source code.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CODE PREVIEW ─────────────────────────────────────── -->
+    <section id="codePreview" aria-labelledby="codeHeading">
+      <div class="container">
+        <div class="codeGrid">
+          <div class="reveal">
+            <p class="sectionLabel">Code editor</p>
+            <h2 id="codeHeading">Simple, readable syntax</h2>
+            <p style="margin: 16px 0 24px; color: var(--dim)">
+              SwimFlow uses a clean, human-readable syntax similar to Mermaid —
+              but more powerful. Write it once, version-control it, generate it
+              from code.
+            </p>
+            <ul
+              style="
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+              "
+            >
+              <li
+                style="
+                  display: flex;
+                  gap: 10px;
+                  font-size: 0.9rem;
+                  color: var(--tx);
+                "
+              >
+                <span style="color: var(--gr)">✓</span> Syntax highlighting
+                &amp; autocomplete as you type
+              </li>
+              <li
+                style="
+                  display: flex;
+                  gap: 10px;
+                  font-size: 0.9rem;
+                  color: var(--tx);
+                "
+              >
+                <span style="color: var(--gr)">✓</span>
+                <code>from:right to:left</code> port control inline
+              </li>
+              <li
+                style="
+                  display: flex;
+                  gap: 10px;
+                  font-size: 0.9rem;
+                  color: var(--tx);
+                "
+              >
+                <span style="color: var(--gr)">✓</span> <code>YES</code> /
+                <code>NO</code> branch coloring built-in
+              </li>
+              <li
+                style="
+                  display: flex;
+                  gap: 10px;
+                  font-size: 0.9rem;
+                  color: var(--tx);
+                "
+              >
+                <span style="color: var(--gr)">✓</span>
+                <code>&lt;-&gt;</code> bidirectional arrows
+              </li>
+              <li
+                style="
+                  display: flex;
+                  gap: 10px;
+                  font-size: 0.9rem;
+                  color: var(--tx);
+                "
+              >
+                <span style="color: var(--gr)">✓</span>
+                <code>x N y N w N h N</code> manual position pinning
+              </li>
+              <li
+                style="
+                  display: flex;
+                  gap: 10px;
+                  font-size: 0.9rem;
+                  color: var(--tx);
+                "
+              >
+                <span style="color: var(--gr)">✓</span>
+                <code>// comments</code> supported
+              </li>
+            </ul>
+          </div>
+          <div class="codeBlock reveal">
+            <div class="codeBlockHeader">
+              <span>●</span> swimflow-diagram.sf
+              <span style="margin-left: auto">SwimFlow</span>
+            </div>
+            <div class="codeBlockBody">
+              <pre><span class="ck">diagram</span> <span class="cs">"Release Process"</span>
+<span class="ck">direction</span> LR
+<span class="ck">theme</span> dark
+
+<span class="cl">lane</span> <span class="cs">"IT Owner"</span> blue
+  <span class="cn">start</span> <span class="ci">s1</span>
+  <span class="cn">process</span> <span class="ci">a1</span> <span class="cs">"Analyze requirements"</span>
+  <span class="cn">process</span> <span class="ci">a2</span> <span class="cs">"Test features"</span>
+  <span class="cn">decision</span> <span class="ci">d1</span> <span class="cs">"Bug Found?"</span>
+<span class="cl">endlane</span>
+
+<span class="cl">lane</span> <span class="cs">"Vendor"</span> purple
+  <span class="cn">process</span> <span class="ci">b1</span> <span class="cs">"Develop features"</span>
+  <span class="cn">process</span> <span class="ci">b2</span> <span class="cs">"Fix defects"</span>
+<span class="cl">endlane</span>
+
+<span class="cco">// Connect nodes with arrows</span>
+<span class="ca">arrow</span> <span class="ci">s1</span> <span class="cop">-></span> <span class="ci">a1</span>
+<span class="ca">arrow</span> <span class="ci">a1</span> <span class="cop">-></span> <span class="ci">b1</span> <span class="cs">"Submit CR"</span> <span class="ci">from:right to:left</span>
+<span class="ca">arrow</span> <span class="ci">d1</span> <span class="cop">-></span> <span class="ci">b2</span> <span class="cy">YES</span> <span class="cs">"Report defects"</span>
+<span class="ca">arrow</span> <span class="ci">d1</span> <span class="cop">-></span> <span class="ci">qa1</span> <span class="cno">NO</span></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── COMPARISON ────────────────────────────────────────── -->
+    <section id="compare" aria-labelledby="compareHeading">
+      <div class="container">
+        <p class="sectionLabel">Comparison</p>
+        <h2 id="compareHeading" style="margin-bottom: 40px">
+          SwimFlow vs the alternatives
+        </h2>
+        <div style="overflow-x: auto">
+          <table class="compTable" aria-label="Feature comparison table">
+            <thead>
+              <tr>
+                <th scope="col">Feature</th>
+                <th scope="col">SwimFlow</th>
+                <th scope="col">Lucidchart</th>
+                <th scope="col">draw.io</th>
+                <th scope="col">Mermaid</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="sfrow">
+                <td>100% Free (no limits)</td>
+                <td><span class="chk">✓</span></td>
+                <td><span class="xch">✕</span> Paid tiers</td>
+                <td><span class="chk">✓</span></td>
+                <td><span class="chk">✓</span></td>
+              </tr>
+              <tr>
+                <td>No sign-up required</td>
+                <td class="sfrow"><span class="chk">✓</span></td>
+                <td><span class="xch">✕</span></td>
+                <td><span class="chk">✓</span></td>
+                <td><span class="chk">✓</span></td>
+              </tr>
+              <tr class="sfrow">
+                <td>Visual drag-and-drop builder</td>
+                <td><span class="chk">✓</span></td>
+                <td><span class="chk">✓</span></td>
+                <td><span class="chk">✓</span></td>
+                <td><span class="xch">✕</span></td>
+              </tr>
+              <tr>
+                <td>Code-based diagram syntax</td>
+                <td class="sfrow"><span class="chk">✓</span></td>
+                <td><span class="xch">✕</span></td>
+                <td><span class="xch">✕</span></td>
+                <td><span class="chk">✓</span></td>
+              </tr>
+              <tr class="sfrow">
+                <td>Live bi-directional sync (code ↔ canvas)</td>
+                <td><span class="chk">✓</span></td>
+                <td><span class="xch">✕</span></td>
+                <td><span class="xch">✕</span></td>
+                <td><span class="xch">✕</span></td>
+              </tr>
+              <tr>
+                <td>Port-level connection control (8 ports)</td>
+                <td class="sfrow"><span class="chk">✓</span></td>
+                <td><span class="partial">~</span> Basic</td>
+                <td><span class="partial">~</span> Basic</td>
+                <td><span class="xch">✕</span></td>
+              </tr>
+              <tr class="sfrow">
+                <td>Curved / orthogonal routing</td>
+                <td><span class="chk">✓</span></td>
+                <td><span class="chk">✓</span></td>
+                <td><span class="chk">✓</span></td>
+                <td><span class="partial">~</span> Basic</td>
+              </tr>
+              <tr>
+                <td>SVG + PNG export (no watermark)</td>
+                <td class="sfrow"><span class="chk">✓</span></td>
+                <td><span class="xch">✕</span> Paid</td>
+                <td><span class="chk">✓</span></td>
+                <td><span class="chk">✓</span></td>
+              </tr>
+              <tr class="sfrow">
+                <td>Runs 100% in browser (no server)</td>
+                <td><span class="chk">✓</span></td>
+                <td><span class="xch">✕</span></td>
+                <td><span class="chk">✓</span></td>
+                <td><span class="chk">✓</span></td>
+              </tr>
+              <tr>
+                <td>Swimlane-optimized (primary focus)</td>
+                <td class="sfrow"><span class="chk">✓</span></td>
+                <td><span class="partial">~</span> General</td>
+                <td><span class="partial">~</span> General</td>
+                <td><span class="partial">~</span> General</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── USE CASES ─────────────────────────────────────────── -->
+    <section id="use-cases" aria-labelledby="useCasesHeading">
+      <div class="container">
+        <p class="sectionLabel">Who uses it</p>
+        <h2 id="useCasesHeading" style="margin-bottom: 40px">
+          Built for every team
+        </h2>
+        <div class="useCaseGrid">
+          <article class="ucCard reveal">
+            <div class="ucIcon">🔧</div>
+            <div>
+              <h3>Software Development Teams</h3>
+              <p>
+                Map CI/CD pipelines, code review workflows, deployment
+                processes, and microservice interactions across ownership
+                boundaries.
+              </p>
+              <div class="ucTags">
+                <span class="ucTag">CI/CD pipelines</span>
+                <span class="ucTag">Code review flow</span>
+                <span class="ucTag">UML activity</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="ucCard reveal">
+            <div class="ucIcon">📋</div>
+            <div>
+              <h3>Business Analysts &amp; BPM</h3>
+              <p>
+                Document BPMN business processes, approval chains, procurement
+                flows, and HR workflows with cross-functional clarity.
+              </p>
+              <div class="ucTags">
+                <span class="ucTag">BPMN diagrams</span>
+                <span class="ucTag">Approval flows</span>
+                <span class="ucTag">Process mapping</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="ucCard reveal">
+            <div class="ucIcon">🎓</div>
+            <div>
+              <h3>Educators &amp; Students</h3>
+              <p>
+                Teach UML activity diagrams, system design concepts, and
+                algorithm flows with clean, presentable, exportable visuals.
+              </p>
+              <div class="ucTags">
+                <span class="ucTag">UML teaching</span>
+                <span class="ucTag">System design</span>
+                <span class="ucTag">Presentations</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="ucCard reveal">
+            <div class="ucIcon">🏗️</div>
+            <div>
+              <h3>Product &amp; Project Managers</h3>
+              <p>
+                Visualize sprint workflows, stakeholder responsibilities,
+                release processes, and cross-team dependencies clearly.
+              </p>
+              <div class="ucTags">
+                <span class="ucTag">Sprint flows</span>
+                <span class="ucTag">Release process</span>
+                <span class="ucTag">Stakeholder map</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TESTIMONIALS ──────────────────────────────────────── -->
+    <!-- <section
+      id="testimonials"
+      aria-labelledby="testimonialsHeading"
+      style="
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      "
+    >
+      <div class="container">
+        <p class="sectionLabel">Community</p>
+        <h2 id="testimonialsHeading" style="margin-bottom: 40px">
+          What people are saying
+        </h2>
+        <div class="testGrid">
+          <article class="testCard reveal">
+            <div class="stars">★★★★★</div>
+            <p>
+              "Finally a UML swimlane tool that actually works in the browser
+              without forcing me to create an account. The code editor with live
+              preview is exactly what I wanted."
+            </p>
+            <div class="testAuthor">
+              <div class="testAvatar" style="background: var(--ac)">JK</div>
+              <div>
+                <div class="testName">J. Kim</div>
+                <div class="testRole">Senior Software Engineer</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="testCard reveal">
+            <div class="stars">★★★★★</div>
+            <p>
+              "I use SwimFlow for all my BPMN process documentation. The ability
+              to write the diagram as code and have it render instantly is a
+              game changer for version-controlled docs."
+            </p>
+            <div class="testAuthor">
+              <div class="testAvatar" style="background: var(--ac2)">MP</div>
+              <div>
+                <div class="testName">M. Patel</div>
+                <div class="testRole">Business Analyst</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="testCard reveal">
+            <div class="stars">★★★★★</div>
+            <p>
+              "I teach UML to 200+ students and needed something free with no
+              login. SwimFlow is perfect — the visual builder makes it easy for
+              beginners, the code editor for power users."
+            </p>
+            <div class="testAuthor">
+              <div class="testAvatar" style="background: var(--gr)">AT</div>
+              <div>
+                <div class="testName">A. Tanaka</div>
+                <div class="testRole">CS Lecturer</div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- ── FAQ ──────────────────────────────────────────────── -->
+    <section id="faq" aria-labelledby="faqHeading">
+      <div class="container">
+        <p class="sectionLabel">FAQ</p>
+        <h2 id="faqHeading" style="margin-bottom: 40px">
+          Frequently asked questions
+        </h2>
+        <div class="faqGrid">
+          <article class="faqCard reveal">
+            <h3>Is SwimFlow really free?</h3>
+            <p>
+              Yes, 100%. No account, no credit card, no watermarks. All features
+              including SVG/PNG export are permanently free.
+            </p>
+          </article>
+
+          <article class="faqCard reveal">
+            <h3>What is a swimlane diagram?</h3>
+            <p>
+              A swimlane diagram (cross-functional flowchart) organizes process
+              steps into lanes representing people, teams, or departments —
+              making responsibilities crystal clear. Used in BPMN and UML
+              activity diagrams.
+            </p>
+          </article>
+
+          <article class="faqCard reveal">
+            <h3>How does SwimFlow differ from Mermaid?</h3>
+            <p>
+              SwimFlow has a dedicated swimlane-optimized syntax, a visual
+              drag-and-drop builder, per-arrow port control, waypoints, custom
+              arrow styles, and a live minimap. Mermaid is code-only and lacks
+              swimlane-specific features.
+            </p>
+          </article>
+
+          <article class="faqCard reveal">
+            <h3>How does it compare to Lucidchart?</h3>
+            <p>
+              Lucidchart requires a paid account for full features and export.
+              SwimFlow is completely free, runs in your browser with no sign-up,
+              and adds a unique code-based editing mode with live sync.
+            </p>
+          </article>
+
+          <article class="faqCard reveal">
+            <h3>Can I use diagrams commercially?</h3>
+            <p>
+              Yes. Diagrams you create with SwimFlow are yours. Use them in any
+              commercial project, documentation, presentation, or publication.
+            </p>
+          </article>
+
+          <article class="faqCard reveal">
+            <h3>Does my data get sent to a server?</h3>
+            <p>
+              No. SwimFlow runs entirely in your browser. No data is sent to any
+              server. Your diagrams stay completely private and local.
+            </p>
+          </article>
+
+          <article class="faqCard reveal">
+            <h3>Can I embed the diagram in documents?</h3>
+            <p>
+              Export as SVG and embed it in Word, PowerPoint, Confluence,
+              Notion, or any tool that accepts vector images. Export as PNG for
+              raster use.
+            </p>
+          </article>
+
+          <article class="faqCard reveal">
+            <h3>What node types are supported?</h3>
+            <p>
+              Process (rectangle), Decision (diamond), Start/End (circles), Note
+              (dashed box), I/O (parallelogram), and Sub-process
+              (double-border). All with drag-resize support.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA BANNER ────────────────────────────────────────── -->
+    <section id="ctaBanner" aria-labelledby="ctaHeading">
+      <div class="container">
+        <h2 id="ctaHeading">
+          Start diagramming in seconds.<br /><span class="gText"
+            >No account. No download. Free forever.</span
+          >
+        </h2>
+        <p>
+          Join thousands of developers, analysts, and educators who use SwimFlow
+          every day.
+        </p>
+        <div class="ctaFeatureList">
+          <div class="ctaFeat">Visual Builder</div>
+          <div class="ctaFeat">Code Editor</div>
+          <div class="ctaFeat">Live Preview</div>
+          <div class="ctaFeat">SVG &amp; PNG Export</div>
+          <div class="ctaFeat">100% Free</div>
+          <div class="ctaFeat">No Sign-up</div>
+        </div>
+        <a
+          href="/app/"
+          class="btnPrimary"
+          style="font-size: 17px; padding: 16px 36px"
+          aria-label="Open SwimFlow app for free"
+        >
+          Open SwimFlow Free →
+        </a>
+      </div>
+    </section>
+
+    <!-- ── FOOTER ────────────────────────────────────────────── -->
+    <footer>
+      <div class="container">
+        <div class="footGrid">
+          <div class="footBrand">
+            <div class="logo">Swim<span>Flow</span></div>
+            <p>
+              Free browser-based UML swimlane diagram builder. No account. No
+              download. Build, export, share.
+            </p>
+          </div>
+          <div class="footCol">
+            <h4>Product</h4>
+            <a href="/app/">Open App</a>
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How it works</a>
+            <a href="#compare">Compare</a>
+          </div>
+          <div class="footCol">
+            <h4>Use Cases</h4>
+            <a href="#use-cases">Software Teams</a>
+            <a href="#use-cases">Business Analysis</a>
+            <a href="#use-cases">Education &amp; UML</a>
+            <a href="#use-cases">Product Managers</a>
+          </div>
+          <div class="footCol">
+            <h4>Resources</h4>
+            <a href="#faq">FAQ</a>
+            <a href="/docs/">Documentation</a>
+            <a href="/templates/">Templates</a>
+            <a href="/changelog/">Changelog</a>
+            <a href="/team/">Team</a>
+            <a href="/privacy/">Privacy Policy</a>
+            <a href="/app/">UML Activity Diagrams</a>
+            <a href="/app/">BPMN Process Flows</a>
+            <a href="/app/">Cross-functional Flowcharts</a>
+          </div>
+        </div>
+        <div class="footBottom">
+          <p>
+            © 2026 SwimFlow. Free online swimlane diagram tool.
+            <a href="/privacy/" style="color: var(--dim)">Privacy</a> ·
+            <a href="/team/" style="color: var(--dim)">Team</a> ·
+            <a href="/docs/" style="color: var(--dim)">Docs</a>
+          </p>
+          <div class="footSchemas">
+            <span>UML</span>
+            <span>BPMN</span>
+            <span>SVG Export</span>
+            <span>Free Tool</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // ── Scroll reveal ──────────────────────────────────────────────
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.12 },
+      );
+      document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
+
+      // ── Smooth active nav link highlight ──────────────────────────
+      const sections = document.querySelectorAll("section[id]");
+      const navLinks = document.querySelectorAll(".navLinks a");
+      const navObs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              navLinks.forEach((a) => {
+                a.style.color =
+                  a.getAttribute("href") === "#" + e.target.id
+                    ? "var(--br)"
+                    : "";
+              });
+            }
+          });
+        },
+        { threshold: 0.4 },
+      );
+      sections.forEach((s) => navObs.observe(s));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team | SwimFlow</title>
+<meta name="description" content="Meet Kasidatep, the creator behind SwimFlow, the free online UML swimlane diagram tool.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://swimflow.memolab.me/team/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #06080f;
+  --bg2: #0c0f1a;
+  --bg3: #111520;
+  --border: #1a2235;
+  --border2: #222d45;
+  --ac: #4f9eff;
+  --ac2: #7c5cfc;
+  --gr: #2ecc8a;
+  --tx: #c0cfe8;
+  --dim: #485870;
+  --br: #e8f0ff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--tx);
+  font-family: "Inter", sans-serif;
+  line-height: 1.62;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-family: "Syne", sans-serif;
+  color: var(--br);
+  line-height: 1.2;
+}
+
+a { color: var(--ac); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 22px;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid var(--border);
+  background: rgba(6, 8, 15, 0.88);
+  backdrop-filter: blur(18px);
+}
+
+.navInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 22px;
+  min-height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: "Syne", sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--br);
+}
+
+.logo span { color: var(--ac); }
+
+.links {
+  display: flex;
+  gap: 16px;
+  font-size: 14px;
+}
+
+.page {
+  position: relative;
+  isolation: isolate;
+}
+
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 60% 35% at 50% -10%, rgba(79, 158, 255, 0.18) 0%, transparent 75%),
+    radial-gradient(ellipse 30% 30% at 80% 20%, rgba(124, 92, 252, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+main {
+  padding: 52px 0 80px;
+}
+
+.hero {
+  padding: 34px;
+  border-radius: 18px;
+  border: 1px solid rgba(79, 158, 255, 0.26);
+  background:
+    radial-gradient(ellipse at 80% 0%, rgba(124, 92, 252, 0.2), transparent 60%),
+    linear-gradient(140deg, rgba(79, 158, 255, 0.12), rgba(79, 158, 255, 0.04));
+  margin-bottom: 28px;
+  box-shadow: 0 22px 54px rgba(0, 0, 0, 0.45);
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 4.2vw, 3rem);
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+
+.hero p { max-width: 74ch; }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  border-radius: 999px;
+  color: var(--ac);
+  background: rgba(79, 158, 255, 0.12);
+  border: 1px solid rgba(79, 158, 255, 0.28);
+  padding: 5px 12px;
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+
+.badge::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gr);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin-bottom: 12px;
+  font-weight: 700;
+  color: white;
+  font-family: "Syne", sans-serif;
+}
+
+.card h2,
+.card h3 {
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.role {
+  color: var(--ac);
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 0.92rem;
+  color: var(--tx);
+}
+
+.stats {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.stat {
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.stat strong {
+  display: block;
+  color: var(--br);
+  font-family: "Syne", sans-serif;
+  font-size: 1rem;
+}
+
+.stat span {
+  color: var(--dim);
+  font-size: 0.78rem;
+}
+
+.values {
+  margin-top: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.value {
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.value strong { color: var(--br); }
+
+.ecosystem {
+  margin-top: 18px;
+}
+
+.ecosystem h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.tools {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.tool {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.tool h3 {
+  font-size: 0.95rem;
+  margin-bottom: 5px;
+}
+
+.tool p {
+  font-size: 0.84rem;
+  color: var(--dim);
+  margin-bottom: 8px;
+}
+
+.tool a {
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.contact {
+  margin-top: 18px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.contact h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.contactGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip {
+  border: 1px solid var(--border2);
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 0.84rem;
+  background: var(--bg3);
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  margin-top: 42px;
+  padding-top: 18px;
+  color: var(--dim);
+  font-size: 13px;
+}
+
+@media (max-width: 900px) {
+  .grid,
+  .tools {
+    grid-template-columns: 1fr;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+  .links { display: none; }
+  .hero, .card { padding: 16px; }
+  .tools,
+  .contact {
+    padding: 16px;
+  }
+}
+</style>
+</head>
+<body>
+<nav aria-label="Top navigation">
+  <div class="navInner">
+    <a href="/" class="logo" aria-label="SwimFlow home">Swim<span>Flow</span></a>
+    <div class="links">
+      <a href="/app/">App</a>
+      <a href="/privacy/">Privacy</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page">
+  <main class="container">
+    <section class="hero" aria-labelledby="teamHeading">
+      <p class="badge">Solo Builder</p>
+      <h1 id="teamHeading">Meet Kasidatep</h1>
+      <p>
+        SwimFlow is designed and maintained by Kasidatep, focused on shipping practical,
+        fast tools for process designers, developers, and technical teams.
+      </p>
+    </section>
+
+    <section class="grid" aria-label="Founder profile and principles">
+      <article class="card">
+        <div class="avatar" style="background: var(--ac);">KS</div>
+        <h2>Kasidatep</h2>
+        <p class="role">Founder &amp; Product Engineer</p>
+        <p>
+          Builds SwimFlow end-to-end: product direction, UX, front-end implementation,
+          rendering quality, and documentation.
+        </p>
+
+        <div class="stats" aria-label="Quick profile facts">
+          <div class="stat">
+            <strong>1</strong>
+            <span>Core builder</span>
+          </div>
+          <div class="stat">
+            <strong>24-48h</strong>
+            <span>Typical reply time</span>
+          </div>
+          <div class="stat">
+            <strong>Web-first</strong>
+            <span>Product approach</span>
+          </div>
+        </div>
+      </article>
+
+      <section class="values" aria-label="Builder principles">
+        <div class="value"><strong>Clarity first:</strong> Diagrams should make ownership and process boundaries obvious at a glance.</div>
+        <div class="value"><strong>Speed matters:</strong> Interactions must feel instant so teams can iterate quickly under real deadlines.</div>
+        <div class="value"><strong>Privacy-aware by default:</strong> Keep workflows browser-native and minimize unnecessary data handling.</div>
+      </section>
+    </section>
+
+    <section class="ecosystem" aria-labelledby="ecosystemHeading">
+      <h2 id="ecosystemHeading">Kasidate Ecosystem</h2>
+      <div class="tools">
+        <article class="tool">
+          <h3>KasidateDEV</h3>
+          <p>Developer resources for extensions and add-ons.</p>
+          <a href="https://dev.kasidate.me/" target="_blank" rel="noopener noreferrer">Visit dev.kasidate.me</a>
+        </article>
+        <article class="tool">
+          <h3>Spotlight</h3>
+          <p>Featured content and curated updates.</p>
+          <a href="https://spotlight.kasidate.me/" target="_blank" rel="noopener noreferrer">Visit spotlight.kasidate.me</a>
+        </article>
+        <article class="tool">
+          <h3>Kasidate Tools</h3>
+          <p>QR generator, short URL, and utility services.</p>
+          <a href="https://kasidate.me/" target="_blank" rel="noopener noreferrer">Explore kasidate.me</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact" aria-labelledby="contactHeading">
+      <h2 id="contactHeading">Contact</h2>
+      <div class="contactGrid">
+        <a class="chip" href="mailto:contact@kasidate.me">contact@kasidate.me</a>
+        <a class="chip" href="https://github.com/kasidatep" target="_blank" rel="noopener noreferrer">github.com/kasidatep</a>
+        <a class="chip" href="https://linkedin.com/in/kasidatep" target="_blank" rel="noopener noreferrer">linkedin.com/in/kasidatep</a>
+      </div>
+    </section>
+
+    <footer>
+      © 2026 SwimFlow · <a href="/">Home</a> · <a href="/privacy/">Privacy Policy</a>
+    </footer>
+  </main>
+</div>
+</body>
+</html>
