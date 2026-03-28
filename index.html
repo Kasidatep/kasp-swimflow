@@ -1076,6 +1076,78 @@
         padding: 3px 9px;
       }
 
+      /* ── MOBILE APP POPUP ── */
+      .mobilePopup {
+        position: fixed;
+        inset: 0;
+        z-index: 300;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      .mobilePopup.open {
+        display: flex;
+      }
+      .mobilePopupBackdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(2, 6, 14, 0.72);
+        backdrop-filter: blur(6px);
+      }
+      .mobilePopupCard {
+        position: relative;
+        width: min(420px, 100%);
+        border: 1px solid var(--border2);
+        border-radius: 16px;
+        background: linear-gradient(160deg, #101728, #0b1220);
+        box-shadow:
+          0 24px 80px rgba(0, 0, 0, 0.6),
+          0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+        padding: 20px;
+      }
+      .mobilePopupBadge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.7px;
+        text-transform: uppercase;
+        color: #9ed1ff;
+        background: rgba(79, 158, 255, 0.12);
+        border: 1px solid rgba(79, 158, 255, 0.3);
+        border-radius: 999px;
+        padding: 5px 10px;
+      }
+      .mobilePopupTitle {
+        margin-top: 12px;
+        margin-bottom: 8px;
+        font-size: 1.25rem;
+      }
+      .mobilePopupText {
+        color: var(--tx);
+        font-size: 0.95rem;
+        line-height: 1.65;
+        margin-bottom: 16px;
+      }
+      .mobilePopupActions {
+        display: flex;
+        justify-content: flex-end;
+      }
+      .mobilePopupBtn {
+        border: 0;
+        padding: 10px 16px;
+        border-radius: 10px;
+        background: var(--ac);
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .mobilePopupBtn:hover {
+        filter: brightness(1.12);
+      }
+
       /* ── MOTION TOKENS ── */
       @keyframes labPulse {
         0%,
@@ -1165,6 +1237,9 @@
         .heroStats {
           flex-wrap: wrap;
           gap: 20px;
+        }
+        .navCta {
+          display: none;
         }
         .navLab {
           margin-left: auto;
@@ -1287,7 +1362,7 @@
               <div class="dot r"></div>
               <div class="dot y"></div>
               <div class="dot g"></div>
-              <span class="demoTitle">SwimFlow — Software Release Process</span>
+              <span class="demoTitle">SwimFlow — E-commerce Campaign Flow</span>
             </div>
             <div class="demoBody">
               <!-- Inline SVG demo diagram -->
@@ -1298,517 +1373,74 @@
                 font-family="JetBrains Mono,monospace"
               >
                 <rect width="520" height="300" fill="#080a0f" />
-                <!-- Lane 1 -->
-                <rect
-                  x="0"
-                  y="0"
-                  width="104"
-                  height="300"
-                  fill="rgba(79,158,255,.04)"
-                  stroke="#4f9eff"
-                  stroke-opacity=".15"
-                  stroke-width="1"
-                />
-                <rect x="0" y="0" width="104" height="3" fill="#4f9eff" />
-                <text
-                  x="52"
-                  y="22"
-                  text-anchor="middle"
-                  fill="#4f9eff"
-                  font-size="9"
-                  font-weight="600"
-                >
-                  IT Owner
-                </text>
-                <!-- Lane 2 -->
-                <rect
-                  x="104"
-                  y="0"
-                  width="104"
-                  height="300"
-                  fill="rgba(124,92,252,.04)"
-                  stroke="#7c5cfc"
-                  stroke-opacity=".15"
-                  stroke-width="1"
-                />
-                <rect x="104" y="0" width="104" height="3" fill="#7c5cfc" />
-                <text
-                  x="156"
-                  y="22"
-                  text-anchor="middle"
-                  fill="#7c5cfc"
-                  font-size="9"
-                  font-weight="600"
-                >
-                  Vendor
-                </text>
-                <!-- Lane 3 -->
-                <rect
-                  x="208"
-                  y="0"
-                  width="104"
-                  height="300"
-                  fill="rgba(46,204,138,.04)"
-                  stroke="#2ecc8a"
-                  stroke-opacity=".15"
-                  stroke-width="1"
-                />
-                <rect x="208" y="0" width="104" height="3" fill="#2ecc8a" />
-                <text
-                  x="260"
-                  y="22"
-                  text-anchor="middle"
-                  fill="#2ecc8a"
-                  font-size="9"
-                  font-weight="600"
-                >
-                  QA
-                </text>
-                <!-- Lane 4 -->
-                <rect
-                  x="312"
-                  y="0"
-                  width="104"
-                  height="300"
-                  fill="rgba(255,202,58,.04)"
-                  stroke="#ffca3a"
-                  stroke-opacity=".15"
-                  stroke-width="1"
-                />
-                <rect x="312" y="0" width="104" height="3" fill="#ffca3a" />
-                <text
-                  x="364"
-                  y="22"
-                  text-anchor="middle"
-                  fill="#ffca3a"
-                  font-size="9"
-                  font-weight="600"
-                >
-                  Post-Test
-                </text>
-                <!-- Lane 5 -->
-                <rect
-                  x="416"
-                  y="0"
-                  width="104"
-                  height="300"
-                  fill="rgba(255,122,90,.04)"
-                  stroke="#ff7a5a"
-                  stroke-opacity=".15"
-                  stroke-width="1"
-                />
-                <rect x="416" y="0" width="104" height="3" fill="#ff7a5a" />
-                <text
-                  x="468"
-                  y="22"
-                  text-anchor="middle"
-                  fill="#ff7a5a"
-                  font-size="9"
-                  font-weight="600"
-                >
-                  Production
-                </text>
-                <!-- Nodes -->
-                <!-- Start -->
-                <circle cx="52" cy="50" r="10" fill="#4f9eff" />
-                <!-- Process a1 -->
-                <rect
-                  x="8"
-                  y="70"
-                  width="88"
-                  height="36"
-                  rx="4"
-                  fill="#111826"
-                  stroke="#4f9eff"
-                  stroke-width="1.2"
-                />
-                <rect
-                  x="8"
-                  y="70"
-                  width="3"
-                  height="36"
-                  fill="#4f9eff"
-                  rx="2"
-                />
-                <text
-                  x="54"
-                  y="83"
-                  text-anchor="middle"
-                  fill="#b2c4de"
-                  font-size="7"
-                >
-                  Analyze &amp;
-                </text>
-                <text
-                  x="54"
-                  y="93"
-                  text-anchor="middle"
-                  fill="#b2c4de"
-                  font-size="7"
-                >
-                  design reqs
-                </text>
-                <!-- Process a2 -->
-                <rect
-                  x="8"
-                  y="130"
-                  width="88"
-                  height="30"
-                  rx="4"
-                  fill="#111826"
-                  stroke="#4f9eff"
-                  stroke-width="1.2"
-                />
-                <rect
-                  x="8"
-                  y="130"
-                  width="3"
-                  height="30"
-                  fill="#4f9eff"
-                  rx="2"
-                />
-                <text
-                  x="54"
-                  y="149"
-                  text-anchor="middle"
-                  fill="#b2c4de"
-                  font-size="7"
-                >
-                  Test features
-                </text>
-                <!-- Decision -->
-                <polygon
-                  points="52,172 82,190 52,208 22,190"
-                  fill="#111826"
-                  stroke="#4f9eff"
-                  stroke-width="1.2"
-                />
-                <text
-                  x="52"
-                  y="194"
-                  text-anchor="middle"
-                  fill="#b2c4de"
-                  font-size="7"
-                >
-                  Bug?
-                </text>
-                <!-- Vendor nodes -->
-                <rect
-                  x="112"
-                  y="70"
-                  width="84"
-                  height="36"
-                  rx="4"
-                  fill="#111826"
-                  stroke="#7c5cfc"
-                  stroke-width="1.2"
-                />
-                <rect
-                  x="112"
-                  y="70"
-                  width="3"
-                  height="36"
-                  fill="#7c5cfc"
-                  rx="2"
-                />
-                <text
-                  x="156"
-                  y="86"
-                  text-anchor="middle"
-                  fill="#b2c4de"
-                  font-size="7"
-                >
-                  Develop
-                </text>
-                <text
-                  x="156"
-                  y="97"
-                  text-anchor="middle"
-                  fill="#b2c4de"
-                  font-size="7"
-                >
-                  new features
-                </text>
-                <rect
-                  x="112"
-                  y="160"
-                  width="84"
-                  height="30"
-                  rx="4"
-                  fill="#111826"
-                  stroke="#7c5cfc"
-                  stroke-width="1.2"
-                />
-                <rect
-                  x="112"
-                  y="160"
-                  width="3"
-                  height="30"
-                  fill="#7c5cfc"
-                  rx="2"
-                />
-                <text
-                  x="156"
-                  y="179"
-                  text-anchor="middle"
-                  fill="#b2c4de"
-                  font-size="7"
-                >
-                  Fix defects
-                </text>
-                <!-- QA nodes -->
-                <rect
-                  x="216"
-                  y="120"
-                  width="88"
-                  height="30"
-                  rx="4"
-                  fill="#111826"
-                  stroke="#2ecc8a"
-                  stroke-width="1.2"
-                />
-                <rect
-                  x="216"
-                  y="120"
-                  width="3"
-                  height="30"
-                  fill="#2ecc8a"
-                  rx="2"
-                />
-                <text
-                  x="262"
-                  y="139"
-                  text-anchor="middle"
-                  fill="#b2c4de"
-                  font-size="7"
-                >
-                  QA Testing
-                </text>
-                <polygon
-                  points="260,172 290,190 260,208 230,190"
-                  fill="#111826"
-                  stroke="#2ecc8a"
-                  stroke-width="1.2"
-                />
-                <text
-                  x="260"
-                  y="194"
-                  text-anchor="middle"
-                  fill="#b2c4de"
-                  font-size="7"
-                >
-                  Bug?
-                </text>
-                <!-- Post-test -->
-                <rect
-                  x="320"
-                  y="190"
-                  width="88"
-                  height="36"
-                  rx="4"
-                  fill="#111826"
-                  stroke="#ffca3a"
-                  stroke-width="1.2"
-                />
-                <rect
-                  x="320"
-                  y="190"
-                  width="3"
-                  height="36"
-                  fill="#ffca3a"
-                  rx="2"
-                />
-                <text
-                  x="366"
-                  y="206"
-                  text-anchor="middle"
-                  fill="#b2c4de"
-                  font-size="7"
-                >
-                  Controlled
-                </text>
-                <text
-                  x="366"
-                  y="216"
-                  text-anchor="middle"
-                  fill="#b2c4de"
-                  font-size="7"
-                >
-                  Post-test
-                </text>
-                <polygon
-                  points="364,238 394,256 364,274 334,256"
-                  fill="#111826"
-                  stroke="#ffca3a"
-                  stroke-width="1.2"
-                />
-                <text
-                  x="364"
-                  y="260"
-                  text-anchor="middle"
-                  fill="#b2c4de"
-                  font-size="7"
-                >
-                  Bug?
-                </text>
-                <!-- Production -->
-                <rect
-                  x="424"
-                  y="250"
-                  width="84"
-                  height="30"
-                  rx="4"
-                  fill="#111826"
-                  stroke="#ff7a5a"
-                  stroke-width="1.2"
-                />
-                <rect
-                  x="424"
-                  y="250"
-                  width="3"
-                  height="30"
-                  fill="#ff7a5a"
-                  rx="2"
-                />
-                <text
-                  x="468"
-                  y="269"
-                  text-anchor="middle"
-                  fill="#b2c4de"
-                  font-size="7"
-                >
-                  Full Release
-                </text>
-                <!-- Arrows -->
+
+                <!-- Lanes -->
+                <rect x="0" y="0" width="130" height="300" fill="rgba(79,158,255,.04)" stroke="#4f9eff" stroke-opacity=".15" stroke-width="1" />
+                <rect x="130" y="0" width="130" height="300" fill="rgba(124,92,252,.04)" stroke="#7c5cfc" stroke-opacity=".15" stroke-width="1" />
+                <rect x="260" y="0" width="130" height="300" fill="rgba(46,204,138,.04)" stroke="#2ecc8a" stroke-opacity=".15" stroke-width="1" />
+                <rect x="390" y="0" width="130" height="300" fill="rgba(255,202,58,.04)" stroke="#ffca3a" stroke-opacity=".15" stroke-width="1" />
+
+                <rect x="0" y="0" width="130" height="3" fill="#4f9eff" />
+                <rect x="130" y="0" width="130" height="3" fill="#7c5cfc" />
+                <rect x="260" y="0" width="130" height="3" fill="#2ecc8a" />
+                <rect x="390" y="0" width="130" height="3" fill="#ffca3a" />
+
+                <text x="65" y="22" text-anchor="middle" fill="#4f9eff" font-size="9" font-weight="600">Marketing</text>
+                <text x="195" y="22" text-anchor="middle" fill="#7c5cfc" font-size="9" font-weight="600">Storefront</text>
+                <text x="325" y="22" text-anchor="middle" fill="#2ecc8a" font-size="9" font-weight="600">Payments</text>
+                <text x="455" y="22" text-anchor="middle" fill="#ffca3a" font-size="9" font-weight="600">Fulfillment</text>
+
+                <!-- Flow nodes -->
+                <circle cx="65" cy="62" r="9" fill="#4f9eff" />
+
+                <rect x="18" y="90" width="94" height="34" rx="4" fill="#111826" stroke="#4f9eff" stroke-width="1.2" />
+                <rect x="18" y="90" width="3" height="34" fill="#4f9eff" rx="2" />
+                <text x="65" y="111" text-anchor="middle" fill="#b2c4de" font-size="7">Launch Campaign</text>
+
+                <rect x="148" y="124" width="94" height="34" rx="4" fill="#111826" stroke="#7c5cfc" stroke-width="1.2" />
+                <rect x="148" y="124" width="3" height="34" fill="#7c5cfc" rx="2" />
+                <text x="195" y="145" text-anchor="middle" fill="#b2c4de" font-size="7">Customer Checkout</text>
+
+                <polygon points="325,124 351,142 325,160 299,142" fill="#111826" stroke="#2ecc8a" stroke-width="1.2" />
+                <text x="325" y="145" text-anchor="middle" fill="#b2c4de" font-size="7">Paid?</text>
+
+                <rect x="278" y="184" width="94" height="32" rx="4" fill="#111826" stroke="#ff5757" stroke-width="1.2" />
+                <rect x="278" y="184" width="3" height="32" fill="#ff5757" rx="2" />
+                <text x="325" y="203" text-anchor="middle" fill="#b2c4de" font-size="7">Retry Payment</text>
+
+                <rect x="408" y="124" width="94" height="34" rx="4" fill="#111826" stroke="#ffca3a" stroke-width="1.2" />
+                <rect x="408" y="124" width="3" height="34" fill="#ffca3a" rx="2" />
+                <text x="455" y="139" text-anchor="middle" fill="#b2c4de" font-size="7">Pack &amp; Ship</text>
+                <text x="455" y="149" text-anchor="middle" fill="#b2c4de" font-size="7">Order</text>
+
+                <circle cx="455" cy="236" r="9" fill="#2ecc8a" />
+
                 <defs>
-                  <marker
-                    id="ah"
-                    markerWidth="7"
-                    markerHeight="5"
-                    refX="6"
-                    refY="2.5"
-                    orient="auto"
-                  >
+                  <marker id="ahMain" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
                     <polygon points="0 0,7 2.5,0 5" fill="#4f9eff" />
                   </marker>
-                  <marker
-                    id="ahg"
-                    markerWidth="7"
-                    markerHeight="5"
-                    refX="6"
-                    refY="2.5"
-                    orient="auto"
-                  >
+                  <marker id="ahOk" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
                     <polygon points="0 0,7 2.5,0 5" fill="#2ecc8a" />
                   </marker>
-                  <marker
-                    id="ahr"
-                    markerWidth="7"
-                    markerHeight="5"
-                    refX="6"
-                    refY="2.5"
-                    orient="auto"
-                  >
+                  <marker id="ahFail" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
                     <polygon points="0 0,7 2.5,0 5" fill="#ff5757" />
                   </marker>
                 </defs>
-                <!-- s1 -> a1 -->
-                <line
-                  x1="52"
-                  y1="60"
-                  x2="52"
-                  y2="70"
-                  stroke="#4f9eff"
-                  stroke-width="1.3"
-                  marker-end="url(#ah)"
-                />
-                <!-- a1 -> b1 -->
-                <path
-                  d="M 96 88 L 108 88 L 108 88 L 112 88"
-                  stroke="#4f9eff"
-                  stroke-width="1.3"
-                  fill="none"
-                  marker-end="url(#ah)"
-                />
-                <!-- b1 -> a2 -->
-                <path
-                  d="M 112 145 L 96 145"
-                  stroke="#7c5cfc"
-                  stroke-width="1.3"
-                  fill="none"
-                  marker-end="url(#ah)"
-                  stroke-dasharray="3,2"
-                />
-                <!-- a2 -> d1 -->
-                <line
-                  x1="52"
-                  y1="160"
-                  x2="52"
-                  y2="172"
-                  stroke="#4f9eff"
-                  stroke-width="1.3"
-                  marker-end="url(#ah)"
-                />
-                <!-- d1 -> b2 YES -->
-                <path
-                  d="M 82 190 L 97 190 L 97 175 L 112 175"
-                  stroke="#ff5757"
-                  stroke-width="1.3"
-                  fill="none"
-                  marker-end="url(#ahr)"
-                />
-                <text
-                  x="91"
-                  y="186"
-                  text-anchor="middle"
-                  fill="#ff5757"
-                  font-size="7"
-                >
-                  YES
-                </text>
-                <!-- d1 -> c1 NO -->
-                <path
-                  d="M 52 208 L 52 220 L 208 220 L 208 150 L 216 150"
-                  stroke="#2ecc8a"
-                  stroke-width="1.3"
-                  fill="none"
-                  marker-end="url(#ahg)"
-                />
-                <text
-                  x="130"
-                  y="217"
-                  text-anchor="middle"
-                  fill="#2ecc8a"
-                  font-size="7"
-                >
-                  NO
-                </text>
-                <!-- c1 -> d2 -->
-                <line
-                  x1="260"
-                  y1="150"
-                  x2="260"
-                  y2="172"
-                  stroke="#2ecc8a"
-                  stroke-width="1.3"
-                  marker-end="url(#ahg)"
-                />
-                <!-- d2 -> e1 NO -->
-                <path
-                  d="M 290 190 L 312 190 L 312 208"
-                  stroke="#2ecc8a"
-                  stroke-width="1.3"
-                  fill="none"
-                  marker-end="url(#ahg)"
-                />
-                <!-- d3 -> f1 NO -->
-                <path
-                  d="M 394 256 L 410 256 L 410 265 L 424 265"
-                  stroke="#2ecc8a"
-                  stroke-width="1.3"
-                  fill="none"
-                  marker-end="url(#ahg)"
-                />
+
+                <line x1="65" y1="71" x2="65" y2="90" stroke="#4f9eff" stroke-width="1.3" marker-end="url(#ahMain)" />
+                <line x1="112" y1="107" x2="148" y2="141" stroke="#4f9eff" stroke-width="1.3" marker-end="url(#ahMain)" />
+                <line x1="242" y1="141" x2="299" y2="141" stroke="#4f9eff" stroke-width="1.3" marker-end="url(#ahMain)" />
+
+                <line x1="351" y1="142" x2="408" y2="142" stroke="#2ecc8a" stroke-width="1.3" marker-end="url(#ahOk)" />
+                <text x="379" y="134" text-anchor="middle" fill="#2ecc8a" font-size="7">YES</text>
+
+                <path d="M 325 160 L 325 184" stroke="#ff5757" stroke-width="1.3" fill="none" marker-end="url(#ahFail)" />
+                <text x="336" y="176" fill="#ff5757" font-size="7">NO</text>
+
+                <path d="M 278 200 L 228 200 L 228 160" stroke="#ff5757" stroke-width="1.3" stroke-dasharray="3,2" fill="none" marker-end="url(#ahFail)" />
+                <text x="246" y="194" fill="#ff5757" font-size="7">retry</text>
+
+                <line x1="455" y1="158" x2="455" y2="227" stroke="#2ecc8a" stroke-width="1.3" marker-end="url(#ahOk)" />
               </svg>
             </div>
           </div>
@@ -2183,27 +1815,37 @@
               <span style="margin-left: auto">SwimFlow</span>
             </div>
             <div class="codeBlockBody">
-              <pre><span class="ck">diagram</span> <span class="cs">"Release Process"</span>
+              <pre><span class="ck">diagram</span> <span class="cs">"E-commerce Campaign Flow"</span>
 <span class="ck">direction</span> LR
 <span class="ck">theme</span> dark
 
-<span class="cl">lane</span> <span class="cs">"IT Owner"</span> blue
-  <span class="cn">start</span> <span class="ci">s1</span>
-  <span class="cn">process</span> <span class="ci">a1</span> <span class="cs">"Analyze requirements"</span>
-  <span class="cn">process</span> <span class="ci">a2</span> <span class="cs">"Test features"</span>
-  <span class="cn">decision</span> <span class="ci">d1</span> <span class="cs">"Bug Found?"</span>
+<span class="cl">lane</span> <span class="cs">"Marketing"</span> blue
+  <span class="cn">start</span> <span class="ci">m0</span>
+  <span class="cn">process</span> <span class="ci">m1</span> <span class="cs">"Launch campaign"</span>
 <span class="cl">endlane</span>
 
-<span class="cl">lane</span> <span class="cs">"Vendor"</span> purple
-  <span class="cn">process</span> <span class="ci">b1</span> <span class="cs">"Develop features"</span>
-  <span class="cn">process</span> <span class="ci">b2</span> <span class="cs">"Fix defects"</span>
+<span class="cl">lane</span> <span class="cs">"Storefront"</span> purple
+  <span class="cn">process</span> <span class="ci">s1</span> <span class="cs">"Customer checkout"</span>
 <span class="cl">endlane</span>
 
-<span class="cco">// Connect nodes with arrows</span>
-<span class="ca">arrow</span> <span class="ci">s1</span> <span class="cop">-></span> <span class="ci">a1</span>
-<span class="ca">arrow</span> <span class="ci">a1</span> <span class="cop">-></span> <span class="ci">b1</span> <span class="cs">"Submit CR"</span> <span class="ci">from:right to:left</span>
-<span class="ca">arrow</span> <span class="ci">d1</span> <span class="cop">-></span> <span class="ci">b2</span> <span class="cy">YES</span> <span class="cs">"Report defects"</span>
-<span class="ca">arrow</span> <span class="ci">d1</span> <span class="cop">-></span> <span class="ci">qa1</span> <span class="cno">NO</span></pre>
+<span class="cl">lane</span> <span class="cs">"Payments"</span> green
+  <span class="cn">decision</span> <span class="ci">p1</span> <span class="cs">"Paid?"</span>
+  <span class="cn">process</span> <span class="ci">p2</span> <span class="cs">"Retry payment"</span>
+<span class="cl">endlane</span>
+
+<span class="cl">lane</span> <span class="cs">"Fulfillment"</span> yellow
+  <span class="cn">process</span> <span class="ci">f1</span> <span class="cs">"Pack and ship"</span>
+  <span class="cn">end</span> <span class="ci">f2</span>
+<span class="cl">endlane</span>
+
+<span class="cco">// Checkout and payment paths</span>
+<span class="ca">arrow</span> <span class="ci">m0</span> <span class="cop">-></span> <span class="ci">m1</span>
+<span class="ca">arrow</span> <span class="ci">m1</span> <span class="cop">-></span> <span class="ci">s1</span> <span class="cs">"Traffic"</span> <span class="ci">from:right to:left</span>
+<span class="ca">arrow</span> <span class="ci">s1</span> <span class="cop">-></span> <span class="ci">p1</span> <span class="cs">"Place order"</span>
+<span class="ca">arrow</span> <span class="ci">p1</span> <span class="cop">-></span> <span class="ci">f1</span> <span class="cy">YES</span>
+<span class="ca">arrow</span> <span class="ci">p1</span> <span class="cop">-></span> <span class="ci">p2</span> <span class="cno">NO</span>
+<span class="ca">arrow</span> <span class="ci">p2</span> <span class="cop">-></span> <span class="ci">s1</span> <span class="cs">"Retry"</span> <span class="ci">from:left to:bottom</span>
+<span class="ca">arrow</span> <span class="ci">f1</span> <span class="cop">-></span> <span class="ci">f2</span></pre>
             </div>
           </div>
         </div>
@@ -2618,6 +2260,32 @@
       </div>
     </footer>
 
+    <div
+      id="mobileAppPopup"
+      class="mobilePopup"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="mobilePopupTitle"
+      aria-hidden="true"
+    >
+      <div class="mobilePopupBackdrop" data-close-mobile-popup="true"></div>
+      <div class="mobilePopupCard">
+        <div class="mobilePopupBadge">Mobile Notice</div>
+        <h3 id="mobilePopupTitle" class="mobilePopupTitle">
+          SwimFlow app is not ready on mobile yet
+        </h3>
+        <p class="mobilePopupText">
+          Please open SwimFlow on desktop or laptop for the full diagram editor
+          experience. Mobile support is coming soon.
+        </p>
+        <div class="mobilePopupActions">
+          <button type="button" class="mobilePopupBtn" data-close-mobile-popup="true">
+            I understand
+          </button>
+        </div>
+      </div>
+    </div>
+
     <script>
       const revealEls = Array.from(document.querySelectorAll(".reveal"));
 
@@ -2683,11 +2351,31 @@
       const isMobileVisit = () =>
         window.matchMedia("(max-width: 900px), (hover: none) and (pointer: coarse)").matches;
 
+      const mobileAppPopup = document.getElementById("mobileAppPopup");
+      const closeMobilePopup = () => {
+        if (!mobileAppPopup) return;
+        mobileAppPopup.classList.remove("open");
+        mobileAppPopup.setAttribute("aria-hidden", "true");
+      };
+      const openMobilePopup = () => {
+        if (!mobileAppPopup) return;
+        mobileAppPopup.classList.add("open");
+        mobileAppPopup.setAttribute("aria-hidden", "false");
+      };
+
+      mobileAppPopup
+        ?.querySelectorAll('[data-close-mobile-popup="true"]')
+        .forEach((el) => el.addEventListener("click", closeMobilePopup));
+
+      document.addEventListener("keydown", (ev) => {
+        if (ev.key === "Escape") closeMobilePopup();
+      });
+
       appLinks.forEach((link) => {
         link.addEventListener("click", (ev) => {
           if (!isMobileVisit()) return;
           ev.preventDefault();
-          window.alert("SwimFlow tool is not fully supported on mobile yet. Please wait and open it on desktop.");
+          openMobilePopup();
         });
       });
     </script>
