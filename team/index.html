@@ -293,6 +293,80 @@ main {
   background: var(--bg3);
 }
 
+.workModel {
+  margin-top: 18px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.workModel h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.areas {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.area {
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  background: var(--bg3);
+  padding: 10px;
+}
+
+.area strong {
+  color: var(--br);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.area p {
+  color: var(--dim);
+  font-size: 0.82rem;
+}
+
+.timeline {
+  margin-top: 18px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.timeline h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.steps {
+  display: grid;
+  gap: 10px;
+}
+
+.step {
+  border-left: 2px solid rgba(79,158,255,.45);
+  background: rgba(255,255,255,.02);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.step strong {
+  color: var(--br);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.step p {
+  color: var(--tx);
+  font-size: 0.9rem;
+}
+
 footer {
   border-top: 1px solid var(--border);
   margin-top: 42px;
@@ -303,7 +377,8 @@ footer {
 
 @media (max-width: 900px) {
   .grid,
-  .tools {
+  .tools,
+  .areas {
     grid-template-columns: 1fr;
   }
 
@@ -342,6 +417,7 @@ footer {
         SwimFlow is designed and maintained by Kasidatep, focused on shipping practical,
         fast tools for process designers, developers, and technical teams.
       </p>
+      <p style="margin-top:10px;color:var(--dim);font-size:.92rem;">Role coverage: product strategy, UI/UX, editor architecture, rendering, QA, docs, and release operations.</p>
     </section>
 
     <section class="grid" aria-label="Founder profile and principles">
@@ -407,8 +483,45 @@ footer {
       </div>
     </section>
 
+    <section class="workModel" aria-labelledby="focusHeading">
+      <h2 id="focusHeading">Current Product Focus</h2>
+      <p>SwimFlow roadmap prioritizes workflow speed and reliable outputs over unnecessary complexity.</p>
+      <div class="areas">
+        <div class="area">
+          <strong>Diagram Speed</strong>
+          <p>Fast editing loop, cleaner top-toolbar hierarchy, and fewer clicks per task.</p>
+        </div>
+        <div class="area">
+          <strong>Code Reliability</strong>
+          <p>Lint feedback, stable parsing behavior, and clearer syntax guidance.</p>
+        </div>
+        <div class="area">
+          <strong>Export Quality</strong>
+          <p>Sharp SVG/PNG output with predictable canvas framing for docs and slides.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="timeline" aria-labelledby="buildHeading">
+      <h2 id="buildHeading">How SwimFlow Is Built</h2>
+      <div class="steps">
+        <div class="step">
+          <strong>1. Discover</strong>
+          <p>Collect friction from real user flows and identify the highest-impact bottleneck.</p>
+        </div>
+        <div class="step">
+          <strong>2. Prototype</strong>
+          <p>Ship focused UI/behavior changes quickly in the live app to validate direction.</p>
+        </div>
+        <div class="step">
+          <strong>3. Harden</strong>
+          <p>Stabilize parser/editor behavior, verify exports, and update docs to keep usage clear.</p>
+        </div>
+      </div>
+    </section>
+
     <footer>
-      © 2026 SwimFlow · <a href="/">Home</a> · <a href="/privacy/">Privacy Policy</a>
+      © 2026 SwimFlow · <a href="/">Home</a> · <a href="/privacy/">Privacy Policy</a> · <a href="/docs/">Docs</a>
     </footer>
   </main>
 </div>

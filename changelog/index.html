@@ -55,22 +55,56 @@ footer { margin-top:24px; border-top:1px solid var(--border); padding-top:14px; 
   <section class="hero">
     <h1>Changelog</h1>
     <p>Track new capabilities, UX improvements, and fixes across SwimFlow releases.</p>
+    <p style="margin-top:8px;color:var(--dim);font-size:.9rem;">Latest updates focus on editor workflow speed, top-toolbar hierarchy, export ergonomics, and product documentation quality.</p>
   </section>
 
   <section class="timeline" aria-label="Release notes">
     <article class="release">
-      <div class="head"><h2 class="version">v1.4.0</h2><span class="date">2026-03-27</span></div>
-      <div class="pills"><span class="pill">New</span><span class="pill">UX</span><span class="pill">Export</span></div>
+      <div class="head"><h2 class="version">v2.3.0</h2><span class="date">2026-03-28</span></div>
+      <div class="pills"><span class="pill">Toolbar</span><span class="pill">UX</span><span class="pill">Export</span></div>
       <ul>
-        <li>Added templates, docs, and changelog pages to broaden product surface.</li>
-        <li>Improved discoverability of privacy and team pages from homepage resources.</li>
-        <li>Refined messaging around free usage and no-sign-up workflow.</li>
+        <li>Introduced a two-layer top toolbar model: primary tools on line 1 and support tools on line 2.</li>
+        <li>Added support toolbar visibility modes: Auto, Show, and Hide (persisted per browser).</li>
+        <li>Support toolbar now appears as an overlay dropdown in Auto mode so canvas/work area does not shift on hover.</li>
+        <li>Promoted diagram export actions (SVG, PNG, Copy PNG) to the primary toolbar for faster access.</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="head"><h2 class="version">v2.2.0</h2><span class="date">2026-03-28</span></div>
+      <div class="pills"><span class="pill">Editor</span><span class="pill">Quality</span><span class="pill">Data</span></div>
+      <ul>
+        <li>Added Template Gallery with one-click starter flows in MemoLab Studio.</li>
+        <li>Added Snapshot system with save/load/rename/delete for named local checkpoints.</li>
+        <li>Added Lint panel with live structural checks: parser errors, id collisions, missing arrow nodes, and quality warnings.</li>
+        <li>Added node search-and-focus flow and keyboard shortcut support.</li>
+        <li>Added JSON export for full project state (code, diagram objects, config, metadata).</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="head"><h2 class="version">v2.1.0</h2><span class="date">2026-03-28</span></div>
+      <div class="pills"><span class="pill">Content</span><span class="pill">Docs</span><span class="pill">Brand</span></div>
+      <ul>
+        <li>Rebuilt docs into full product documentation covering syntax, workflows, lint, templates, snapshots, and exports.</li>
+        <li>Expanded Team page with clearer solo-builder profile, focus areas, and operating model.</li>
+        <li>Expanded Privacy page with local-first behavior, storage model, share/export considerations, and user controls.</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="head"><h2 class="version">v2.0.0</h2><span class="date">2026-03-27</span></div>
+      <div class="pills"><span class="pill">Platform</span><span class="pill">Routing</span><span class="pill">Pages</span></div>
+      <ul>
+        <li>Expanded site structure with Docs, Templates, Changelog, Team, Privacy, and custom 404 pages.</li>
+        <li>Moved to extensionless route structure with folder-based pages for cleaner URLs.</li>
+        <li>Set up GitHub Pages deployment workflow and custom-domain support files.</li>
       </ul>
     </article>
 
     <article class="release">
       <div class="head"><h2 class="version">v1.3.0</h2><span class="date">2026-03-24</span></div>
-      <div class="pills"><span class="pill">Routing</span><span class="pill">Editor</span></div>
+      <div class="pills"><span class="pill">Rendering</span><span class="pill">Editor</span></div>
       <ul>
         <li>Improved port-aware routing for cleaner arrows in dense diagrams.</li>
         <li>Enhanced code editor feedback for syntax and branch labels.</li>

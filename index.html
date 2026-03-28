@@ -17,6 +17,7 @@
       content="swimlane diagram, UML diagram tool, free online flowchart maker, swimlane diagram software, BPMN diagram tool, cross-functional flowchart, process flow diagram, UML activity diagram, no-code diagram builder, swimlane creator, lucidchart alternative, draw.io alternative, free diagram tool"
     />
     <meta name="author" content="SwimFlow" />
+    <meta name="publisher" content="MemoLab" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://swimflow.memolab.me/" />
 
@@ -67,9 +68,19 @@
           "priceCurrency": "USD"
         },
         "description": "Free online UML swimlane diagram builder with visual drag-and-drop editor and code-based diagramming. No sign-up required.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "MemoLab"
+        },
         "featureList": [
           "Drag-and-drop swimlane diagram builder",
           "Syntax-highlighted code editor with live preview",
+          "Template gallery with quick insert",
+          "Diagram snapshots and restore",
+          "Built-in lint diagnostics panel",
+          "Shareable link from encoded diagram",
+          "Code import and export",
+          "JSON export for integrations",
           "Visual node builder with form-based editing",
           "8-port arrow connection system",
           "Curved and orthogonal routing",
@@ -145,6 +156,7 @@
         --border2: #222d45;
         --ac: #4f9eff;
         --ac2: #7c5cfc;
+        --or: #ff9040;
         --gr: #2ecc8a;
         --ye: #ffca3a;
         --re: #ff5757;
@@ -167,7 +179,10 @@
       }
 
       body {
-        background: var(--bg);
+        background:
+          radial-gradient(circle at 10% -10%, rgba(79, 158, 255, 0.16), transparent 35%),
+          radial-gradient(circle at 88% 20%, rgba(124, 92, 252, 0.1), transparent 40%),
+          var(--bg);
         color: var(--tx);
         font-family: "Inter", sans-serif;
         font-size: 16px;
@@ -255,6 +270,42 @@
       .navLogo span {
         color: var(--ac);
       }
+      .navLab {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        font-size: 10px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #dbe7ff;
+        margin-left: 2px;
+        border: 1px solid rgba(124, 92, 252, 0.45);
+        border-radius: 999px;
+        padding: 4px 10px;
+        background: linear-gradient(130deg, rgba(79, 158, 255, 0.16), rgba(124, 92, 252, 0.22));
+        box-shadow:
+          inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+          0 8px 22px rgba(45, 76, 140, 0.25);
+        overflow: hidden;
+        animation: labPulse 3.4s ease-in-out infinite;
+      }
+      .navLab::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 999px;
+        background: #9cd4ff;
+        margin-right: 6px;
+        box-shadow: 0 0 14px rgba(156, 212, 255, 0.8);
+      }
+      .navLab::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.2) 50%, transparent 65%);
+        transform: translateX(-140%);
+        animation: labShine 3.6s linear infinite;
+      }
       .navLinks {
         display: flex;
         gap: 28px;
@@ -278,10 +329,23 @@
         font-size: 14px;
         font-weight: 600;
         transition: filter 0.15s;
+        position: relative;
+        overflow: hidden;
       }
       .navCta:hover {
         filter: brightness(1.15);
         text-decoration: none;
+      }
+      .navCta::after {
+        content: "";
+        position: absolute;
+        top: -10%;
+        left: -80%;
+        width: 65%;
+        height: 120%;
+        background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+        transform: skewX(-20deg);
+        animation: ctaSweep 2.8s linear infinite;
       }
 
       /* ── HERO ── */
@@ -306,12 +370,27 @@
             transparent 60%
           );
         pointer-events: none;
+        animation: heroGlow 10s ease-in-out infinite alternate;
+      }
+      #hero::after {
+        content: "";
+        position: absolute;
+        width: 320px;
+        height: 320px;
+        border-radius: 50%;
+        right: -120px;
+        top: 30px;
+        background: radial-gradient(circle, rgba(79, 158, 255, 0.22), transparent 65%);
+        filter: blur(12px);
+        pointer-events: none;
+        animation: heroOrb 13s ease-in-out infinite;
       }
       .heroGrid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 64px;
         align-items: center;
+        perspective: 1000px;
       }
       .heroBadge {
         display: inline-flex;
@@ -382,11 +461,24 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
+        position: relative;
+        overflow: hidden;
       }
       .btnPrimary:hover {
         filter: brightness(1.15);
         transform: translateY(-1px);
         text-decoration: none;
+      }
+      .btnPrimary::after {
+        content: "";
+        position: absolute;
+        top: -10%;
+        left: -90%;
+        width: 70%;
+        height: 120%;
+        background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+        transform: skewX(-20deg);
+        animation: ctaSweep 3.2s linear infinite;
       }
       .btnSecondary {
         padding: 14px 28px;
@@ -432,6 +524,9 @@
         box-shadow:
           0 40px 80px rgba(0, 0, 0, 0.6),
           0 0 0 1px rgba(255, 255, 255, 0.04);
+        transform: translateY(0) rotateX(0) rotateY(0);
+        animation: demoFloat 6s ease-in-out infinite;
+        transition: transform 0.25s ease;
       }
       .demoBar {
         height: 38px;
@@ -504,9 +599,10 @@
         border: 1px solid var(--border);
         border-radius: 14px;
         padding: 28px;
-        transition: all 0.2s;
+        transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
         position: relative;
         overflow: hidden;
+        will-change: transform;
       }
       .featCard::before {
         content: "";
@@ -526,7 +622,7 @@
       }
       .featCard:hover {
         border-color: var(--border2);
-        transform: translateY(-3px);
+        transform: translateY(-6px) scale(1.01);
         box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
       }
       .featCard:hover::before {
@@ -803,11 +899,11 @@
         display: flex;
         gap: 20px;
         align-items: flex-start;
-        transition: all 0.2s;
+        transition: transform 0.22s ease, border-color 0.22s ease;
       }
       .ucCard:hover {
         border-color: var(--border2);
-        transform: translateY(-2px);
+        transform: translateY(-5px);
       }
       .ucIcon {
         font-size: 28px;
@@ -980,6 +1076,65 @@
         padding: 3px 9px;
       }
 
+      /* ── MOTION TOKENS ── */
+      @keyframes labPulse {
+        0%,
+        100% {
+          box-shadow:
+            inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+            0 8px 22px rgba(45, 76, 140, 0.25);
+        }
+        50% {
+          box-shadow:
+            inset 0 0 0 1px rgba(255, 255, 255, 0.07),
+            0 10px 28px rgba(59, 100, 182, 0.34);
+        }
+      }
+      @keyframes labShine {
+        from {
+          transform: translateX(-140%);
+        }
+        to {
+          transform: translateX(140%);
+        }
+      }
+      @keyframes ctaSweep {
+        from {
+          transform: translateX(0) skewX(-20deg);
+        }
+        to {
+          transform: translateX(310%) skewX(-20deg);
+        }
+      }
+      @keyframes heroGlow {
+        from {
+          transform: scale(1);
+          opacity: 0.9;
+        }
+        to {
+          transform: scale(1.08);
+          opacity: 1;
+        }
+      }
+      @keyframes heroOrb {
+        0%,
+        100% {
+          transform: translate(0, 0);
+        }
+        50% {
+          transform: translate(-36px, 24px);
+        }
+      }
+      @keyframes demoFloat {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+
       /* ── RESPONSIVE ── */
       @media (max-width: 900px) {
         .heroGrid,
@@ -1011,6 +1166,10 @@
           flex-wrap: wrap;
           gap: 20px;
         }
+        .navLab {
+          margin-left: auto;
+          margin-right: auto;
+        }
       }
       @media (max-width: 580px) {
         .featGrid,
@@ -1027,12 +1186,22 @@
         opacity: 0;
         transform: translateY(24px);
         transition:
-          opacity 0.6s,
-          transform 0.6s;
+          opacity 0.7s,
+          transform 0.7s;
       }
       .reveal.visible {
         opacity: 1;
         transform: none;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+          transition-duration: 0.01ms !important;
+          transition-delay: 0ms !important;
+        }
       }
 
       /* ── GRADIENT TEXT ── */
@@ -1051,6 +1220,7 @@
         <a href="/" class="navLogo" aria-label="SwimFlow home"
           >Swim<span>Flow</span></a
         >
+        <span class="navLab" aria-label="Built by MemoLab">by MemoLab</span>
         <div class="navLinks" role="list">
           <a href="#features" role="listitem">Features</a>
           <a href="#how-it-works" role="listitem">How it works</a>
@@ -1660,6 +1830,56 @@
         <div class="featGrid">
           <article class="featCard reveal" style="--cardAccent: var(--ac)">
             <div class="featIcon" style="background: rgba(79, 158, 255, 0.1)">
+              🧠
+            </div>
+            <h3>Template Gallery</h3>
+            <p>
+              Start fast with built-in templates for release workflows, approval
+              loops, incident handling, and BPM process maps. Insert and adapt
+              in seconds.
+            </p>
+            <span
+              class="tag"
+              style="background: rgba(79, 158, 255, 0.1); color: var(--ac)"
+              >New</span
+            >
+          </article>
+
+          <article class="featCard reveal" style="--cardAccent: var(--ac2)">
+            <div class="featIcon" style="background: rgba(124, 92, 252, 0.1)">
+              📸
+            </div>
+            <h3>Snapshots &amp; Restore</h3>
+            <p>
+              Save named snapshots while editing and jump back to any saved
+              state instantly. Great for exploring alternatives without losing
+              your current version.
+            </p>
+            <span
+              class="tag"
+              style="background: rgba(124, 92, 252, 0.1); color: var(--ac2)"
+              >New</span
+            >
+          </article>
+
+          <article class="featCard reveal" style="--cardAccent: var(--gr)">
+            <div class="featIcon" style="background: rgba(46, 204, 138, 0.1)">
+              🧪
+            </div>
+            <h3>Lint &amp; Diagram Checks</h3>
+            <p>
+              Built-in lint panel catches broken arrows, missing start/end
+              nodes, duplicate IDs, and lane issues before you export.
+            </p>
+            <span
+              class="tag"
+              style="background: rgba(46, 204, 138, 0.1); color: var(--gr)"
+              >New</span
+            >
+          </article>
+
+          <article class="featCard reveal" style="--cardAccent: var(--ac)">
+            <div class="featIcon" style="background: rgba(79, 158, 255, 0.1)">
               🧩
             </div>
             <h3>Visual Builder</h3>
@@ -1747,7 +1967,8 @@
             <h3>Clean SVG &amp; PNG Export</h3>
             <p>
               Export a clean, cropped SVG (vector, infinitely scalable) or 2×
-              PNG for presentations. Fonts embedded. No watermarks.
+              PNG for presentations. Fonts embedded. No watermarks. Also export
+              JSON for downstream tooling and automation.
             </p>
             <span
               class="tag"
@@ -1801,6 +2022,22 @@
               class="tag"
               style="background: rgba(46, 204, 138, 0.1); color: var(--gr)"
               >Navigation</span
+            >
+          </article>
+
+          <article class="featCard reveal" style="--cardAccent: var(--ye)">
+            <div class="featIcon" style="background: rgba(255, 202, 58, 0.1)">
+              🔗
+            </div>
+            <h3>Share, Import, and Autosave</h3>
+            <p>
+              Generate shareable links, import SwimFlow code files, and keep a
+              local draft automatically saved so work is never lost.
+            </p>
+            <span
+              class="tag"
+              style="background: rgba(255, 202, 58, 0.1); color: var(--ye)"
+              >New</span
             >
           </article>
         </div>
@@ -2242,8 +2479,9 @@
             <p>
               SwimFlow has a dedicated swimlane-optimized syntax, a visual
               drag-and-drop builder, per-arrow port control, waypoints, custom
-              arrow styles, and a live minimap. Mermaid is code-only and lacks
-              swimlane-specific features.
+              arrow styles, templates, snapshots, lint diagnostics, and a live
+              minimap. Mermaid is code-only and lacks swimlane-specific
+              features.
             </p>
           </article>
 
@@ -2334,6 +2572,7 @@
               Free browser-based UML swimlane diagram builder. No account. No
               download. Build, export, share.
             </p>
+            <p style="margin-top: 8px">Crafted by MemoLab.</p>
           </div>
           <div class="footCol">
             <h4>Product</h4>
@@ -2380,6 +2619,8 @@
     </footer>
 
     <script>
+      const revealEls = Array.from(document.querySelectorAll(".reveal"));
+
       // ── Scroll reveal ──────────────────────────────────────────────
       const obs = new IntersectionObserver(
         (entries) => {
@@ -2391,7 +2632,10 @@
         },
         { threshold: 0.12 },
       );
-      document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
+      revealEls.forEach((el, idx) => {
+        el.style.transitionDelay = `${Math.min(idx * 45, 280)}ms`;
+        obs.observe(el);
+      });
 
       // ── Smooth active nav link highlight ──────────────────────────
       const sections = document.querySelectorAll("section[id]");
@@ -2412,6 +2656,40 @@
         { threshold: 0.4 },
       );
       sections.forEach((s) => navObs.observe(s));
+
+      // ── Hero interactive tilt (desktop pointer devices only) ─────
+      const heroDemo = document.querySelector(".heroDemo");
+      const canTilt =
+        heroDemo &&
+        window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+      if (canTilt) {
+        heroDemo.addEventListener("mousemove", (ev) => {
+          const rect = heroDemo.getBoundingClientRect();
+          const px = (ev.clientX - rect.left) / rect.width;
+          const py = (ev.clientY - rect.top) / rect.height;
+          const rotateY = (px - 0.5) * 7;
+          const rotateX = (0.5 - py) * 6;
+          heroDemo.style.transform = `translateY(-3px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`;
+        });
+
+        heroDemo.addEventListener("mouseleave", () => {
+          heroDemo.style.transform = "";
+        });
+      }
+
+      // ── Mobile guard for app access ───────────────────────────────
+      const appLinks = document.querySelectorAll('a[href="/app/"]');
+      const isMobileVisit = () =>
+        window.matchMedia("(max-width: 900px), (hover: none) and (pointer: coarse)").matches;
+
+      appLinks.forEach((link) => {
+        link.addEventListener("click", (ev) => {
+          if (!isMobileVisit()) return;
+          ev.preventDefault();
+          window.alert("SwimFlow tool is not fully supported on mobile yet. Please wait and open it on desktop.");
+        });
+      });
     </script>
   </body>
 </html>

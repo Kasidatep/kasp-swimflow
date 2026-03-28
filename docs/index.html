@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Documentation | SwimFlow</title>
-<meta name="description" content="Official SwimFlow docs: syntax, workflow, shortcuts, and export guide.">
+<meta name="description" content="Complete SwimFlow documentation: interface, syntax, keyboard shortcuts, templates, snapshots, lint, and export workflow.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://swimflow.memolab.me/docs/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,46 +16,171 @@
   --bg2: #0c0f1a;
   --bg3: #111520;
   --border: #1a2235;
-  --border2: #222d45;
+  --border2: #23304a;
   --ac: #4f9eff;
   --ac2: #7c5cfc;
   --gr: #2ecc8a;
   --tx: #c0cfe8;
-  --dim: #485870;
+  --dim: #4b5a73;
   --br: #e8f0ff;
+  --warn: #ffca3a;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { background: var(--bg); color: var(--tx); font-family: "Inter", sans-serif; line-height: 1.65; }
-h1,h2,h3 { font-family: "Syne", sans-serif; color: var(--br); line-height: 1.2; }
+h1, h2, h3 { font-family: "Syne", sans-serif; color: var(--br); line-height: 1.2; }
 a { color: var(--ac); text-decoration: none; }
 a:hover { text-decoration: underline; }
-code { font-family: "JetBrains Mono", monospace; font-size: .86em; color: #9dd5ff; background: rgba(79,158,255,.1); padding: 2px 6px; border-radius: 4px; }
-.container { max-width: 1060px; margin: 0 auto; padding: 0 22px; }
-nav { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid var(--border); background: rgba(6,8,15,.86); backdrop-filter: blur(18px); }
-.navInner { min-height: 62px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.logo { font-family: "Syne", sans-serif; font-size: 20px; font-weight: 800; color: var(--br); }
+code, pre { font-family: "JetBrains Mono", monospace; }
+code {
+  font-size: .86em;
+  color: #9dd5ff;
+  background: rgba(79,158,255,.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+pre {
+  margin-top: 10px;
+  background: #0a1020;
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  padding: 12px;
+  font-size: .84rem;
+  color: #cfe2ff;
+  overflow-x: auto;
+}
+.container { max-width: 1120px; margin: 0 auto; padding: 0 22px; }
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid var(--border);
+  background: rgba(6,8,15,.86);
+  backdrop-filter: blur(18px);
+}
+.navInner {
+  min-height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.logo {
+  font-family: "Syne", sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--br);
+}
 .logo span { color: var(--ac); }
 .links { display: flex; gap: 14px; font-size: 14px; }
-main { padding: 46px 0 72px; }
-.hero { border: 1px solid rgba(79,158,255,.28); border-radius: 16px; padding: 28px; margin-bottom: 18px; background: linear-gradient(140deg, rgba(79,158,255,.12), rgba(124,92,252,.08)); }
+main { padding: 40px 0 78px; }
+.hero {
+  border: 1px solid rgba(79,158,255,.28);
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 18px;
+  background: linear-gradient(140deg, rgba(79,158,255,.12), rgba(124,92,252,.08));
+}
 .hero h1 { font-size: clamp(2rem, 4.5vw, 3rem); margin-bottom: 8px; }
+.hero p { max-width: 820px; }
+.note {
+  margin-top: 12px;
+  font-size: .88rem;
+  color: #b6c6e4;
+  border: 1px solid rgba(255,202,58,.22);
+  background: rgba(255,202,58,.08);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
 .grid { display: grid; grid-template-columns: 280px 1fr; gap: 16px; }
-.toc, .panel { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; }
-.toc { padding: 14px; position: sticky; top: 78px; height: fit-content; }
+.toc, .panel {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+.toc {
+  padding: 14px;
+  position: sticky;
+  top: 78px;
+  height: fit-content;
+}
 .toc h2 { font-size: 1rem; margin-bottom: 8px; }
-.toc a { display: block; color: var(--dim); font-size: .9rem; padding: 6px 0; }
+.toc a {
+  display: block;
+  color: var(--dim);
+  font-size: .9rem;
+  padding: 6px 0;
+}
 .toc a:hover { color: var(--br); text-decoration: none; }
 .panel { padding: 18px; }
-.section { padding-bottom: 16px; margin-bottom: 16px; border-bottom: 1px solid var(--border); }
+.section {
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+}
 .section:last-child { border-bottom: 0; margin-bottom: 0; }
 .section h2 { font-size: 1.2rem; margin-bottom: 8px; }
 .section p { font-size: .94rem; color: var(--tx); }
-.kbd { border: 1px solid var(--border2); background: var(--bg3); color: var(--br); border-radius: 6px; padding: 2px 6px; font-size: .78rem; font-family: "JetBrains Mono", monospace; }
-ul { margin: 10px 0 0 18px; display: grid; gap: 6px; }
+.section h3 {
+  font-size: 1rem;
+  margin-top: 14px;
+  margin-bottom: 6px;
+}
+.kbd {
+  border: 1px solid var(--border2);
+  background: var(--bg3);
+  color: var(--br);
+  border-radius: 6px;
+  padding: 2px 6px;
+  font-size: .78rem;
+  font-family: "JetBrains Mono", monospace;
+}
+ul, ol { margin: 10px 0 0 18px; display: grid; gap: 6px; }
 li { color: var(--tx); font-size: .92rem; }
-footer { margin-top: 24px; border-top: 1px solid var(--border); padding-top: 14px; color: var(--dim); font-size: 13px; }
-@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } .toc { position: static; } }
-@media (max-width: 640px) { .links { display: none; } .hero, .panel, .toc { padding: 14px; } }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+th, td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  font-size: .88rem;
+}
+th {
+  color: var(--br);
+  font-weight: 600;
+  background: rgba(255,255,255,.02);
+}
+tr:last-child td { border-bottom: 0; }
+.tag {
+  display: inline-block;
+  font-size: .73rem;
+  letter-spacing: .2px;
+  border: 1px solid var(--border2);
+  color: #9ec9ff;
+  padding: 1px 6px;
+  border-radius: 999px;
+  margin-right: 5px;
+}
+footer {
+  margin-top: 24px;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+  color: var(--dim);
+  font-size: 13px;
+}
+@media (max-width: 980px) {
+  .grid { grid-template-columns: 1fr; }
+  .toc { position: static; }
+}
+@media (max-width: 640px) {
+  .links { display: none; }
+  .hero, .panel, .toc { padding: 14px; }
+}
 </style>
 </head>
 <body>
@@ -63,9 +188,9 @@ footer { margin-top: 24px; border-top: 1px solid var(--border); padding-top: 14p
   <div class="container navInner">
     <a href="/" class="logo">Swim<span>Flow</span></a>
     <div class="links">
+      <a href="/app/">Open App</a>
       <a href="/templates/">Templates</a>
       <a href="/changelog/">Changelog</a>
-      <a href="/app/">Open App</a>
     </div>
   </div>
 </nav>
@@ -73,73 +198,247 @@ footer { margin-top: 24px; border-top: 1px solid var(--border); padding-top: 14p
 <main class="container">
   <section class="hero">
     <h1>SwimFlow Documentation</h1>
-    <p>Everything needed to design diagrams quickly: syntax basics, editor flow, and export best practices.</p>
+    <p>SwimFlow is a code + visual editor for swimlane diagrams. This guide covers the full workflow: writing syntax, designing visually, validating with lint, saving snapshots, and exporting for docs or slides.</p>
+    <div class="note">Current app version documented here: <strong>v7</strong>.</div>
   </section>
 
   <div class="grid">
     <aside class="toc" aria-label="Documentation table of contents">
       <h2>Contents</h2>
       <a href="#quick-start">Quick Start</a>
+      <a href="#interface">Interface Overview</a>
+      <a href="#top-toolbar">Top Toolbar</a>
       <a href="#syntax">Syntax Core</a>
-      <a href="#connections">Connections</a>
+      <a href="#nodes">Node Types</a>
+      <a href="#arrows">Arrows and Ports</a>
+      <a href="#code-tools">Code Tools</a>
+      <a href="#quality">Lint and Quality</a>
+      <a href="#templates-snapshots">Templates and Snapshots</a>
+      <a href="#import-export">Import, Share, Export</a>
       <a href="#shortcuts">Keyboard Shortcuts</a>
-      <a href="#export">Export Guide</a>
+      <a href="#troubleshooting">Troubleshooting</a>
     </aside>
 
     <article class="panel">
       <section id="quick-start" class="section">
         <h2>Quick Start</h2>
-        <p>Create lanes, add nodes, connect them, and export. You can build visually or use code mode for precision.</p>
+        <ol>
+          <li>Open the app at <code>/app/</code>.</li>
+          <li>Keep <code>Code</code> tab active and start from Example or a Template.</li>
+          <li>Edit lanes, nodes, and arrows in the editor.</li>
+          <li>Click <code>Render</code> to rebuild diagram from code.</li>
+          <li>Use <code>Save</code> to store a local draft and export when ready.</li>
+        </ol>
+      </section>
+
+      <section id="interface" class="section">
+        <h2>Interface Overview</h2>
+        <p>The app is split into 3 areas:</p>
         <ul>
-          <li>Create a lane and add process/decision nodes.</li>
-          <li>Link nodes with arrows across lanes.</li>
-          <li>Use live preview to verify flow logic.</li>
+          <li><span class="tag">Left</span> code editor, syntax reference, shape palette, properties, lint panel.</li>
+          <li><span class="tag">Center</span> diagram canvas with drag/select/connect tools.</li>
+          <li><span class="tag">Top</span> command toolbar with primary actions and support actions.</li>
         </ul>
+      </section>
+
+      <section id="top-toolbar" class="section">
+        <h2>Top Toolbar</h2>
+        <h3>Primary row (always visible)</h3>
+        <ul>
+          <li>View tabs: <code>Code</code>, <code>Ref</code>, <code>Shapes</code>, <code>Props</code>, <code>Lint</code></li>
+          <li>Main actions: <code>Render</code>, <code>Save</code>, <code>Sync</code></li>
+          <li>Diagram export: <code>SVG</code>, <code>PNG</code>, <code>Copy PNG</code></li>
+          <li>Search: node id/label input + <code>Go</code></li>
+        </ul>
+        <h3>Support row (mode controlled)</h3>
+        <p>Support actions include Example, Layout, Help, panel toggle, Templates, Snapshots, code import/export, JSON export, and share link.</p>
+        <table>
+          <thead>
+            <tr><th>Mode</th><th>Behavior</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>Auto</code></td><td>Support row appears on top-bar hover/focus.</td></tr>
+            <tr><td><code>Show</code></td><td>Support row is always visible.</td></tr>
+            <tr><td><code>Hide</code></td><td>Support row stays hidden.</td></tr>
+          </tbody>
+        </table>
+        <p>Mode is persisted in local storage per browser.</p>
       </section>
 
       <section id="syntax" class="section">
         <h2>Syntax Core</h2>
-        <p>SwimFlow syntax is concise and readable. Example tokens: <code>diagram</code>, <code>lane</code>, <code>process</code>, <code>decision</code>, <code>arrow</code>.</p>
+        <p>SwimFlow syntax is line-based and human readable.</p>
+        <pre>diagram "Order Flow"
+direction LR
+theme dark
+
+config {
+  laneWidth: 195
+  rowHeight: 96
+  radius: 8
+  fontSize: 10.5
+}
+
+lane "Customer" blue
+  start s1
+  process p1 "Checkout"
+endlane</pre>
+        <table>
+          <thead>
+            <tr><th>Token</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>diagram "Title"</code></td><td>Diagram title.</td></tr>
+            <tr><td><code>direction LR|TB</code></td><td>Layout direction (left-right or top-bottom).</td></tr>
+            <tr><td><code>theme dark|light|blue|sepia</code></td><td>Color theme.</td></tr>
+            <tr><td><code>config { ... }</code></td><td>Global sizing and rendering options.</td></tr>
+            <tr><td><code>lane ...</code> / <code>endlane</code></td><td>Swimlane block.</td></tr>
+            <tr><td><code>// comment</code></td><td>Comment line.</td></tr>
+            <tr><td><code>## Heading</code></td><td>Visual section marker in code.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="nodes" class="section">
+        <h2>Node Types</h2>
+        <p>Supported node types:</p>
         <ul>
-          <li><code>lane "Team A" blue</code> creates a lane.</li>
-          <li><code>process p1 "Validate request"</code> adds a node.</li>
-          <li><code>endlane</code> closes the lane block.</li>
+          <li><code>start</code>, <code>end</code></li>
+          <li><code>process</code>, <code>decision</code>, <code>note</code>, <code>io</code>, <code>sub</code></li>
+          <li><code>actor</code>, <code>db</code>, <code>cloud</code>, <code>queue</code></li>
+        </ul>
+        <h3>Node options</h3>
+        <p>Append inline options to any node:</p>
+        <pre>process p2 "Validate" x:120 y:240 w:220 h:70 color:#ff7a5a</pre>
+      </section>
+
+      <section id="arrows" class="section">
+        <h2>Arrows and Ports</h2>
+        <p>Use <code>arrow</code> to connect nodes with style and routing control.</p>
+        <pre>arrow a -> b
+arrow a --> b "Async"
+arrow d1 -> p2 YES from:right to:left
+arrow d1 -> p3 NO style:dashed color:red
+arrow x <-> y</pre>
+        <h3>Arrow operators</h3>
+        <ul>
+          <li><code>-></code> solid</li>
+          <li><code>--></code> dashed</li>
+          <li><code>-x</code> blocked</li>
+          <li><code><-></code> bidirectional</li>
+        </ul>
+        <h3>Arrow options</h3>
+        <ul>
+          <li><code>from:</code> and <code>to:</code> ports</li>
+          <li><code>style:</code> dashed, dotted, thick, double, blocked</li>
+          <li><code>color:</code>, <code>width:</code>, <code>end:</code>, <code>radius:</code>, <code>flip</code></li>
         </ul>
       </section>
 
-      <section id="connections" class="section">
-        <h2>Connections</h2>
-        <p>Connections support direction and branch labels. Port-level control improves readability in dense diagrams.</p>
+      <section id="code-tools" class="section">
+        <h2>Code Tools</h2>
         <ul>
-          <li><code>arrow a1 -> b1</code> simple link.</li>
-          <li><code>arrow d1 -> b2 YES</code> labeled branch.</li>
-          <li><code>from:right to:left</code> explicit ports.</li>
+          <li>Syntax highlighting with autocomplete suggestions.</li>
+          <li>Snippet insertion buttons for common commands.</li>
+          <li>Live preview render (debounced) + explicit Render.</li>
+          <li><code>Sync</code> to generate code from canvas state.</li>
+          <li>Draft autosave + manual Save button.</li>
+        </ul>
+      </section>
+
+      <section id="quality" class="section">
+        <h2>Lint and Quality</h2>
+        <p>The Lint panel reports structural and quality signals:</p>
+        <ul>
+          <li>Parser errors</li>
+          <li>Duplicate node ids</li>
+          <li>Arrows targeting missing nodes</li>
+          <li>Lane block mismatch</li>
+          <li>Missing start/end nodes</li>
+          <li>Isolated nodes and very long labels</li>
+        </ul>
+      </section>
+
+      <section id="templates-snapshots" class="section">
+        <h2>Templates and Snapshots</h2>
+        <h3>Templates</h3>
+        <p>Use ready-made flows (for example onboarding, incident response, release pipeline) and adapt quickly.</p>
+        <h3>Snapshots</h3>
+        <p>Create named checkpoints of your code locally.</p>
+        <ul>
+          <li>Save current draft as snapshot</li>
+          <li>Load any previous snapshot</li>
+          <li>Rename or delete snapshots</li>
+        </ul>
+      </section>
+
+      <section id="import-export" class="section">
+        <h2>Import, Share, Export</h2>
+        <h3>Import and code file export</h3>
+        <ul>
+          <li><code>Import Code</code> accepts plain text or <code>.sf</code>.</li>
+          <li><code>Export Code</code> saves current DSL as <code>.sf</code>.</li>
+        </ul>
+        <h3>Share</h3>
+        <ul>
+          <li><code>Share</code> copies URL with encoded code hash.</li>
+          <li>Opening that URL restores the shared code.</li>
+        </ul>
+        <h3>Diagram export</h3>
+        <ul>
+          <li><code>SVG</code>: best for docs and print.</li>
+          <li><code>PNG</code>: best for chat, slides, and quick sharing.</li>
+          <li><code>Copy PNG</code>: sends image directly to clipboard.</li>
+          <li><code>JSON</code>: full project state export (diagram + code + config).</li>
         </ul>
       </section>
 
       <section id="shortcuts" class="section">
         <h2>Keyboard Shortcuts</h2>
-        <ul>
-          <li><span class="kbd">Ctrl</span> + <span class="kbd">Z</span> undo</li>
-          <li><span class="kbd">Ctrl</span> + <span class="kbd">Y</span> redo</li>
-          <li><span class="kbd">Alt</span> + drag to pan canvas</li>
-        </ul>
+        <table>
+          <thead>
+            <tr><th>Shortcut</th><th>Action</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="kbd">Ctrl/Cmd</span> + <span class="kbd">Enter</span></td><td>Render from code</td></tr>
+            <tr><td><span class="kbd">Ctrl/Cmd</span> + <span class="kbd">S</span></td><td>Export SVG</td></tr>
+            <tr><td><span class="kbd">Ctrl/Cmd</span> + <span class="kbd">Z</span></td><td>Undo</td></tr>
+            <tr><td><span class="kbd">Ctrl/Cmd</span> + <span class="kbd">Y</span></td><td>Redo</td></tr>
+            <tr><td><span class="kbd">Ctrl/Cmd</span> + <span class="kbd">D</span></td><td>Duplicate selection</td></tr>
+            <tr><td><span class="kbd">Ctrl/Cmd</span> + <span class="kbd">A</span></td><td>Select all</td></tr>
+            <tr><td><span class="kbd">Ctrl/Cmd</span> + <span class="kbd">K</span></td><td>Focus search box</td></tr>
+            <tr><td><span class="kbd">Ctrl/Cmd</span> + <span class="kbd">Shift</span> + <span class="kbd">L</span></td><td>Open Lint tab</td></tr>
+            <tr><td><span class="kbd">V</span>, <span class="kbd">A</span>, <span class="kbd">Space</span></td><td>Select, Arrow, Pan tool</td></tr>
+            <tr><td><span class="kbd">F</span></td><td>Fit canvas</td></tr>
+            <tr><td><span class="kbd">Delete</span></td><td>Delete selection</td></tr>
+          </tbody>
+        </table>
       </section>
 
-      <section id="export" class="section">
-        <h2>Export Guide</h2>
-        <p>Use SVG for docs and scalable diagrams, PNG for slides and quick sharing.</p>
+      <section id="troubleshooting" class="section">
+        <h2>Troubleshooting</h2>
+        <h3>Nothing renders</h3>
         <ul>
-          <li>SVG: best for Confluence, Notion, and print.</li>
-          <li>PNG: ideal for messaging and presentation decks.</li>
-          <li>Always check lane labels before export.</li>
+          <li>Confirm at least one <code>lane</code> and one node exist.</li>
+          <li>Open Lint panel and resolve parser errors first.</li>
+        </ul>
+        <h3>Arrow does not connect as expected</h3>
+        <ul>
+          <li>Verify both node ids exist and are unique.</li>
+          <li>Try explicit ports: <code>from:right to:left</code>.</li>
+          <li>Use arrow properties to clear waypoints or flip route.</li>
+        </ul>
+        <h3>Lost work</h3>
+        <ul>
+          <li>Use <code>Save</code> often and keep snapshots for milestones.</li>
+          <li>Draft restore runs automatically on reload in same browser.</li>
         </ul>
       </section>
     </article>
   </div>
 
   <footer>
-    © 2026 SwimFlow · <a href="/">Home</a> · <a href="/team/">Team</a> · <a href="/privacy/">Privacy</a>
+    © 2026 SwimFlow · <a href="/">Home</a> · <a href="/team/">Team</a> · <a href="/privacy/">Privacy</a> · <a href="/app/">Open App</a>
   </footer>
 </main>
 </body>

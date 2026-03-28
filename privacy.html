@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy Policy | SwimFlow</title>
-<meta name="description" content="Privacy policy for SwimFlow, the free browser-based UML swimlane diagram builder.">
+<meta name="description" content="SwimFlow privacy policy: local-first diagram editing, storage behavior, exports, and your controls.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://swimflow.memolab.me/privacy/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,13 +18,10 @@
   --border: #1a2235;
   --border2: #222d45;
   --ac: #4f9eff;
-  --ac2: #7c5cfc;
-  --gr: #2ecc8a;
   --tx: #c0cfe8;
   --dim: #485870;
   --br: #e8f0ff;
 }
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -33,16 +30,22 @@ body {
   font-family: "Inter", sans-serif;
   line-height: 1.7;
 }
-
 h1, h2, h3 {
   font-family: "Syne", sans-serif;
   color: var(--br);
   line-height: 1.2;
 }
-
 a { color: var(--ac); text-decoration: none; }
 a:hover { text-decoration: underline; }
-
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: .85em;
+  color: #9dd5ff;
+  background: rgba(79,158,255,.1);
+  border: 1px solid rgba(79,158,255,.2);
+  border-radius: 6px;
+  padding: 2px 6px;
+}
 nav {
   position: sticky;
   top: 0;
@@ -51,9 +54,8 @@ nav {
   backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--border);
 }
-
 .navInner {
-  max-width: 960px;
+  max-width: 1040px;
   margin: 0 auto;
   padding: 0 22px;
   min-height: 62px;
@@ -62,31 +64,31 @@ nav {
   justify-content: space-between;
   gap: 16px;
 }
-
 .logo {
   font-family: "Syne", sans-serif;
   font-weight: 800;
   font-size: 20px;
   color: var(--br);
 }
-
 .logo span { color: var(--ac); }
-
+.links {
+  display: flex;
+  gap: 14px;
+  font-size: 14px;
+}
 .pill {
-  font-size: 13px;
+  font-size: 12px;
   border: 1px solid rgba(79, 158, 255, 0.3);
   color: var(--ac);
   background: rgba(79, 158, 255, 0.08);
   border-radius: 999px;
   padding: 6px 10px;
 }
-
 main {
-  max-width: 960px;
+  max-width: 1040px;
   margin: 0 auto;
   padding: 56px 22px 80px;
 }
-
 .hero {
   background: linear-gradient(140deg, rgba(79, 158, 255, 0.12), rgba(124, 92, 252, 0.1));
   border: 1px solid rgba(79, 158, 255, 0.25);
@@ -94,46 +96,91 @@ main {
   padding: 28px;
   margin-bottom: 24px;
 }
-
 .hero h1 {
   font-size: clamp(2rem, 5vw, 3rem);
   letter-spacing: -0.02em;
   margin-bottom: 10px;
 }
-
 .hero p { color: var(--tx); }
-
+.stamp {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  font-size: 12px;
+  border: 1px solid var(--border2);
+  color: var(--tx);
+  background: rgba(255,255,255,.03);
+  border-radius: 999px;
+  padding: 5px 10px;
+}
+.notice {
+  border: 1px solid rgba(255,202,58,.26);
+  background: rgba(255,202,58,.08);
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: #d5cda2;
+  font-size: .9rem;
+  margin-top: 10px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 14px;
+}
+.toc,
 .section {
   background: var(--bg2);
   border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 22px;
-  margin-bottom: 14px;
 }
-
+.toc {
+  position: sticky;
+  top: 78px;
+  height: fit-content;
+  padding: 14px;
+}
+.toc h2 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+.toc a {
+  display: block;
+  color: var(--dim);
+  font-size: .9rem;
+  padding: 5px 0;
+}
+.toc a:hover {
+  color: var(--br);
+  text-decoration: none;
+}
+.content {
+  display: grid;
+  gap: 14px;
+}
+.section {
+  padding: 22px;
+}
 .section h2 {
   font-size: 1.15rem;
   margin-bottom: 8px;
 }
-
 .section p,
 .section li {
   color: var(--tx);
   font-size: 0.95rem;
 }
-
 .section ul {
   margin-left: 18px;
   display: grid;
   gap: 6px;
 }
-
-.small { color: var(--dim); font-size: 0.85rem; margin-top: 10px; }
-
 footer {
-  max-width: 960px;
+  max-width: 1040px;
   margin: 0 auto;
-  padding: 0 22px 48px;
+  padding: 26px 22px 48px;
   color: var(--dim);
   font-size: 13px;
   display: flex;
@@ -141,12 +188,15 @@ footer {
   gap: 12px;
   flex-wrap: wrap;
 }
-
+@media (max-width: 920px) {
+  .grid { grid-template-columns: 1fr; }
+  .toc { position: static; }
+}
 @media (max-width: 680px) {
   .navInner { min-height: 58px; }
-  .pill { display: none; }
+  .pill, .links { display: none; }
   main { padding-top: 32px; }
-  .hero, .section { padding: 18px; }
+  .hero, .section, .toc { padding: 18px; }
 }
 </style>
 </head>
@@ -154,6 +204,11 @@ footer {
 <nav aria-label="Top navigation">
   <div class="navInner">
     <a href="/" class="logo" aria-label="SwimFlow home">Swim<span>Flow</span></a>
+    <div class="links">
+      <a href="/app/">App</a>
+      <a href="/docs/">Docs</a>
+      <a href="/team/">Team</a>
+    </div>
     <div class="pill">Privacy-first by design</div>
   </div>
 </nav>
@@ -161,52 +216,103 @@ footer {
 <main>
   <section class="hero" aria-labelledby="privacyHeading">
     <h1 id="privacyHeading">Privacy Policy</h1>
-    <p>SwimFlow is a browser-based tool designed to keep your diagrams private and local whenever possible.</p>
-    <p class="small">Last updated: March 27, 2026</p>
+    <p>SwimFlow is built as a local-first diagram tool. Most editing happens in your browser, and your data stays on your device unless you intentionally export or share it.</p>
+    <div class="stamp">
+      <span class="chip">Last updated: March 28, 2026</span>
+      <span class="chip">Effective: March 28, 2026</span>
+      <span class="chip">Service: swimflow.memolab.me</span>
+    </div>
+    <p class="notice">Important: SwimFlow is a productivity tool, not legal or compliance advice software. You are responsible for how your organization stores and shares exported files.</p>
   </section>
 
-  <section class="section">
-    <h2>1. Data Processing</h2>
-    <p>SwimFlow runs primarily in your browser. Diagram content is generated and rendered client-side.</p>
-  </section>
+  <div class="grid">
+    <aside class="toc" aria-label="Privacy sections">
+      <h2>On This Page</h2>
+      <a href="#processing">1. Local Processing</a>
+      <a href="#storage">2. Browser Storage</a>
+      <a href="#sharing">3. Sharing and Exports</a>
+      <a href="#analytics">4. Technical Data</a>
+      <a href="#third-party">5. Third-Party Services</a>
+      <a href="#rights">6. Your Controls</a>
+      <a href="#retention">7. Retention</a>
+      <a href="#children">8. Children</a>
+      <a href="#changes">9. Policy Changes</a>
+      <a href="#contact">10. Contact</a>
+    </aside>
 
-  <section class="section">
-    <h2>2. Information We Collect</h2>
-    <ul>
-      <li>Basic anonymous analytics such as page views and browser type, if analytics are enabled.</li>
-      <li>No account information is required to use core features.</li>
-      <li>No diagram upload is required for standard editing and export workflows.</li>
-    </ul>
-  </section>
+    <div class="content">
+      <section class="section" id="processing">
+        <h2>1. Local Processing</h2>
+        <p>Diagram editing, rendering, and most interactions are processed on-device in your browser. SwimFlow does not require account login to use core features.</p>
+      </section>
 
-  <section class="section">
-    <h2>3. How We Use Information</h2>
-    <ul>
-      <li>Improve product stability and usability.</li>
-      <li>Measure adoption of major features.</li>
-      <li>Maintain service reliability and prevent abuse.</li>
-    </ul>
-  </section>
+      <section class="section" id="storage">
+        <h2>2. Browser Storage</h2>
+        <p>SwimFlow may store local preferences and draft data in browser storage to improve your editing workflow.</p>
+        <ul>
+          <li>Autosave draft content for recovery between sessions.</li>
+          <li>UI preferences such as support-toolbar visibility mode.</li>
+          <li>Optional local snapshots you create manually.</li>
+        </ul>
+        <p>You can clear this data by clearing site storage in your browser.</p>
+      </section>
 
-  <section class="section">
-    <h2>4. Data Sharing</h2>
-    <p>We do not sell personal data. We may use privacy-conscious third-party services for infrastructure, monitoring, or analytics.</p>
-  </section>
+      <section class="section" id="sharing">
+        <h2>3. Sharing and Exports</h2>
+        <p>SwimFlow supports export and share features that you trigger explicitly:</p>
+        <ul>
+          <li><code>SVG</code>, <code>PNG</code>, and <code>Copy PNG</code> create output on your device.</li>
+          <li><code>Export Code</code> and <code>Export JSON</code> save files locally.</li>
+          <li><code>Share</code> creates a URL that may contain encoded diagram code in the hash portion.</li>
+        </ul>
+        <p>Anyone with a shared link can potentially view the encoded content in that link.</p>
+      </section>
 
-  <section class="section">
-    <h2>5. Cookies</h2>
-    <p>Cookies may be used for basic site functionality and aggregate analytics. You can disable cookies in your browser settings.</p>
-  </section>
+      <section class="section" id="analytics">
+        <h2>4. Technical Data</h2>
+        <p>We may collect limited technical data for service health and product quality, such as page loads, browser family, and aggregated usage patterns.</p>
+      </section>
 
-  <section class="section">
-    <h2>6. Contact</h2>
-    <p>For privacy questions, contact the SwimFlow team through MemoLab support channels.</p>
-  </section>
+      <section class="section" id="third-party">
+        <h2>5. Third-Party Services</h2>
+        <p>We may rely on third-party infrastructure providers for hosting, delivery, and monitoring. Those providers may process technical request metadata as part of normal web operations.</p>
+      </section>
+
+      <section class="section" id="rights">
+        <h2>6. Your Controls</h2>
+        <ul>
+          <li>Use browser settings to block cookies or clear local storage.</li>
+          <li>Avoid creating share links for sensitive data.</li>
+          <li>Prefer offline/local export flow when required by policy.</li>
+        </ul>
+      </section>
+
+      <section class="section" id="retention">
+        <h2>7. Retention</h2>
+        <p>Local draft/snapshot data remains in your browser until you clear it. Server-side technical logs, if collected, are retained for operational and security needs for a limited period.</p>
+      </section>
+
+      <section class="section" id="children">
+        <h2>8. Children</h2>
+        <p>SwimFlow is not directed to children under 13. If you believe a child provided personal information through our services, contact us to request deletion.</p>
+      </section>
+
+      <section class="section" id="changes">
+        <h2>9. Policy Changes</h2>
+        <p>We may update this policy to reflect product and legal changes. The "Last updated" date at the top will indicate the newest revision.</p>
+      </section>
+
+      <section class="section" id="contact">
+        <h2>10. Contact</h2>
+        <p>For privacy questions, contact: <a href="mailto:contact@kasidate.me">contact@kasidate.me</a>.</p>
+      </section>
+    </div>
+  </div>
 </main>
 
 <footer>
   <span>© 2026 SwimFlow</span>
-  <span><a href="/">Home</a> · <a href="/team/">Team</a></span>
+  <span><a href="/">Home</a> · <a href="/team/">Team</a> · <a href="/docs/">Docs</a></span>
 </footer>
 </body>
 </html>
