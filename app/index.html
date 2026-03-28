@@ -187,6 +187,14 @@
       .btn.ac:hover {
         filter: brightness(1.15);
       }
+      .btn.dm {
+        opacity: 0.45;
+        color: var(--dm);
+      }
+      .btn.dm:hover {
+        background: var(--b1);
+        color: var(--tx);
+      }
       .btn.gr {
         background: var(--gr);
         color: #000;
@@ -363,17 +371,19 @@
         position: absolute;
         top: 0;
         left: 0;
-        right: 0;
+        right: 5px;
         padding: 8px 8px 200px 42px;
         font-family: "JetBrains Mono", monospace;
         font-size: 11px;
         line-height: 1.8;
         white-space: pre-wrap;
-        pointer-events: none;
-        color: transparent;
-        tab-size: 2;
-        overflow: hidden;
+        /* pointer-events: none; */
+        /* color: transparent; */
+        /* tab-size: 2; */
+        /* overflow: clip; */
         min-height: 100%;
+        /* opacity: 100; */
+        /* mix-blend-mode: multiply;  */
       }
       #edGutter {
         position: absolute;
@@ -1646,6 +1656,25 @@
         }
       }
 
+      @keyframes waterfallFlow {
+        0% {
+          stroke-dashoffset: 20;
+        }
+        100% {
+          stroke-dashoffset: 0;
+        }
+      }
+
+      .arrowWave {
+        stroke-dasharray: 5, 5;
+        animation: waterfallFlow 1.5s linear infinite;
+      }
+
+      .noWaterfall .arrowWave {
+        animation: none;
+        opacity: 0;
+      }
+
       @media (prefers-reduced-motion: reduce) {
         #top,
         #left,
@@ -1755,6 +1784,7 @@
             <option value="strict">Layout: Strict</option>
             <option value="compact">Layout: Compact</option>
           </select>
+          <button class="btn" id="waterfallBtn" onclick="toggleWaterfall()" title="Toggle waterfall animation">〰 Flow</button>
           <button class="btn" onclick="showHelp()">? Help</button>
           <button class="btn" onclick="openCommandPalette()">⌘ Command</button>
           <button class="btn" onclick="toggleLeft()">◧</button>
@@ -2470,6 +2500,7 @@
         title:'',direction:'LR',theme:'dark',
         layoutMode:'strict',
         sel:new Set(),tool:'sel',snap:true,showMM:true,showPorts:true,
+        waterfallEnabled:true,
         zoom:1,pan:{x:80,y:60},dragging:null,arrowDraw:null,selBox:null,
         history:[],future:[],uidC:1
       };
@@ -3486,6 +3517,11 @@
         const pa={d:ps,fill:'none',stroke:col,'stroke-width':isSel?sw+.9:sw,'stroke-linecap':'round','stroke-linejoin':'round'};
         if(em)pa['marker-end']=`url(#${em})`;if(sm)pa['marker-start']=`url(#${sm})`;if(da)pa['stroke-dasharray']=da;
         mk('path',pa,g2);
+        
+        // Waterfall wave effect layer - simple animated line
+        const wa={d:ps,fill:'none',stroke:col,'stroke-width':sw+0.8,'stroke-linecap':'round','stroke-linejoin':'round',class:'arrowWave','pointer-events':'none'};
+        mk('path',wa,g2);
+        
         if(isSel){
           mk('path',{d:ps,fill:'none',stroke:col,'stroke-width':sw+6,'stroke-opacity':'.16','pointer-events':'none'},g2);
           (a.waypoints||[]).forEach((wp,wi)=>{
@@ -4516,6 +4552,16 @@
         fitAll();
         setSt(m==='compact'?'Layout mode: Compact':'Layout mode: Strict execution');
       }
+      function toggleWaterfall(){
+        S.waterfallEnabled=!S.waterfallEnabled;
+        const btn=g('waterfallBtn');
+        if(btn){
+          btn.classList.toggle('ac',S.waterfallEnabled);
+          btn.classList.toggle('dm',!S.waterfallEnabled);
+        }
+        cv.classList.toggle('noWaterfall',!S.waterfallEnabled);
+        setSt(S.waterfallEnabled?'Waterfall animation: ON':'Waterfall animation: OFF');
+      }
       function updLC(){g('lc').textContent=g('ce').value.split('\n').length+' lines';}
       function fmtCode(){const kw=['start','end','process','decision','note','io','sub','actor','db','cloud','queue','arrow'];g('ce').value=g('ce').value.split('\n').map(l=>{const t=l.trim();if(!t||t.startsWith('//')||t.startsWith('##'))return t;const f=t.split(/\s/)[0].toLowerCase();return kw.includes(f)?'  '+t:t;}).join('\n');updHL();}
       function clrCode(){if(!confirm('Clear all code?'))return;g('ce').value='';updHL();updLC();}
@@ -4737,6 +4783,12 @@
 
       // ══════ INIT ═════════════════════════════════════════════════
       buildPalette();initEditor();
+      // Initialize waterfall button styling
+      const waterfallBtn=g('waterfallBtn');
+      if(waterfallBtn){
+        waterfallBtn.classList.toggle('ac',S.waterfallEnabled);
+        waterfallBtn.classList.toggle('dm',!S.waterfallEnabled);
+      }
       if(!applyCodeFromHash()){
         const draft=loadDraft();
         if(draft.trim()){g('ce').value=draft;updHL();updLC();rfc(true);setSt('Draft restored ✓');}
