@@ -1,6 +1,15 @@
 /* Shared SwimFlow UI theme layer. Diagram themes remain independent. */
 :root {
   color-scheme: dark;
+  --ui-text-strong: #f4f8ff;
+  --ui-text: #c9d7ea;
+  --ui-text-muted: #8fa3bd;
+  --ui-text-subtle: #7186a3;
+  --ui-link: #72b7ff;
+  --ui-surface: #0d1018;
+  --ui-surface-soft: #111520;
+  --ui-surface-raised: #151a28;
+  --ui-border: #27354a;
 }
 
 :root[data-ui-theme="light"] {
@@ -8,37 +17,143 @@
   --bg: #f6f8fc;
   --bg2: #ffffff;
   --bg3: #eef3f9;
-  --border: #d8e1ec;
-  --border2: #c8d4e3;
-  --ac: #2563eb;
-  --ac2: #6941c6;
-  --or: #d95d0b;
-  --gr: #16875f;
-  --ye: #b7791f;
-  --re: #d92d20;
+  --border: #d5dfeb;
+  --border2: #c3d0df;
+  --ac: #1d4ed8;
+  --ac2: #6335b5;
+  --or: #b94708;
+  --gr: #08734f;
+  --ye: #8a5a00;
+  --re: #c6281c;
   --tx: #334155;
-  --dim: #718096;
-  --br: #0f172a;
+  --dim: #596b82;
+  --br: #0b1220;
   --white: #ffffff;
 
-  /* App/editor token set */
   --p1: #ffffff;
   --p2: #f8fafc;
-  --p3: #eef3f9;
-  --b1: #dce5ef;
-  --b2: #cbd7e6;
-  --b3: #b9c8db;
-  --a2: #6941c6;
-  --pk: #b832d9;
-  --dm: #718096;
+  --p3: #edf2f7;
+  --b1: #d8e2ed;
+  --b2: #c5d2e1;
+  --b3: #afc0d3;
+  --a2: #6335b5;
+  --pk: #9d26bb;
+  --dm: #596b82;
+
+  --ui-text-strong: #0b1220;
+  --ui-text: #29384d;
+  --ui-text-muted: #52647b;
+  --ui-text-subtle: #667991;
+  --ui-link: #1d4ed8;
+  --ui-surface: #ffffff;
+  --ui-surface-soft: #f8fafc;
+  --ui-surface-raised: #eef3f9;
+  --ui-border: #cdd8e5;
+}
+
+:root:not([data-ui-theme="light"]) {
+  --tx: var(--ui-text);
+  --dim: var(--ui-text-muted);
+  --dm: var(--ui-text-muted);
+  --br: var(--ui-text-strong);
 }
 
 :root[data-ui-theme="light"] body {
   background:
-    radial-gradient(circle at 10% -10%, rgba(37, 99, 235, 0.08), transparent 34%),
-    radial-gradient(circle at 88% 20%, rgba(105, 65, 198, 0.06), transparent 38%),
+    radial-gradient(circle at 10% -10%, rgba(37, 99, 235, 0.07), transparent 34%),
+    radial-gradient(circle at 88% 20%, rgba(105, 65, 198, 0.05), transparent 38%),
     var(--bg) !important;
-  color: var(--tx) !important;
+  color: var(--ui-text) !important;
+}
+
+body,
+p,
+li,
+td,
+th,
+label,
+input,
+textarea,
+select,
+button {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.logo,
+.title,
+.heading {
+  color: var(--ui-text-strong, var(--br)) !important;
+}
+
+p,
+li,
+td,
+label,
+.description,
+.copy,
+.body-copy {
+  color: var(--ui-text, var(--tx));
+}
+
+.muted,
+.dim,
+.sub,
+.subtitle,
+.meta,
+.hint,
+.help,
+.note,
+.caption,
+.small,
+.byMemo,
+.pnone,
+.status,
+[class*="muted"],
+[class*="hint"] {
+  color: var(--ui-text-muted, var(--dim, var(--dm))) !important;
+}
+
+#top,
+#topSupport,
+#left,
+#right,
+.lpanel,
+#propsDiv,
+#lintDiv,
+#palDiv,
+#abar,
+.seg,
+.dropdown,
+.menu,
+.popover,
+.modal,
+dialog {
+  --dm: var(--ui-text-muted);
+}
+
+#top :where(span, label, small),
+#topSupport :where(span, label, small),
+.lpanel :where(span, label, small),
+#propsDiv :where(span, label, small),
+#lintDiv :where(span, label, small) {
+  color: inherit;
+}
+
+a:not(.btn) {
+  color: var(--ui-link, var(--ac));
+}
+
+a:not(.btn):hover {
+  filter: brightness(1.08);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
 }
 
 :root[data-ui-theme="light"] #top,
@@ -46,9 +161,10 @@
 :root[data-ui-theme="light"] .nav,
 :root[data-ui-theme="light"] header,
 :root[data-ui-theme="light"] .header {
-  background-color: rgba(255, 255, 255, 0.9) !important;
+  background-color: rgba(255, 255, 255, 0.94) !important;
   border-color: var(--border, var(--b1)) !important;
-  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
+  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.05);
+  color: var(--ui-text) !important;
 }
 
 :root[data-ui-theme="light"] #topSupport,
@@ -59,13 +175,15 @@
 :root[data-ui-theme="light"] .popover,
 :root[data-ui-theme="light"] .modal,
 :root[data-ui-theme="light"] dialog {
-  background: rgba(255, 255, 255, 0.97) !important;
+  background: rgba(255, 255, 255, 0.985) !important;
+  color: var(--ui-text) !important;
   border-color: var(--border, var(--b1)) !important;
   box-shadow: 0 18px 48px rgba(15, 23, 42, 0.14) !important;
 }
 
 :root[data-ui-theme="light"] .seg {
-  background: #eef3f8 !important;
+  background: #edf2f7 !important;
+  color: var(--ui-text-muted) !important;
 }
 
 :root[data-ui-theme="light"] input,
@@ -74,30 +192,108 @@
 :root[data-ui-theme="light"] .miniInput,
 :root[data-ui-theme="light"] .modeSel {
   background: #ffffff !important;
-  color: #1e293b !important;
+  color: #172033 !important;
   border-color: var(--border2, var(--b2)) !important;
+  caret-color: var(--ac);
 }
 
 :root[data-ui-theme="light"] input::placeholder,
 :root[data-ui-theme="light"] textarea::placeholder {
-  color: #94a3b8 !important;
+  color: #687b92 !important;
+  opacity: 1;
+}
+
+:root:not([data-ui-theme="light"]) input::placeholder,
+:root:not([data-ui-theme="light"]) textarea::placeholder {
+  color: #8094ad !important;
+  opacity: 1;
+}
+
+.btn,
+button {
+  font-weight: 500;
 }
 
 :root[data-ui-theme="light"] .btn:not(.ac):not(.gr):not(.ye):not(.re),
 :root[data-ui-theme="light"] button:not(.ui-theme-toggle) {
   border-color: var(--border2, var(--b2));
+  color: var(--ui-text) !important;
+}
+
+:root[data-ui-theme="light"] .btn.dm {
+  opacity: 1 !important;
+  color: var(--ui-text-muted) !important;
 }
 
 :root[data-ui-theme="light"] .btn:hover,
 :root[data-ui-theme="light"] button:not(.ui-theme-toggle):hover {
+  color: var(--ui-text-strong) !important;
   box-shadow: 0 6px 18px rgba(37, 99, 235, 0.1);
+}
+
+.btn.ac,
+button.ac {
+  color: #ffffff !important;
+}
+
+.btn.gr,
+button.gr {
+  color: #07140f !important;
+}
+
+:root[data-ui-theme="light"] .btn.ye,
+:root[data-ui-theme="light"] button.ye {
+  color: #704500 !important;
+}
+
+:root[data-ui-theme="light"] .btn.re,
+:root[data-ui-theme="light"] button.re {
+  color: #a91f16 !important;
 }
 
 :root[data-ui-theme="light"] pre,
 :root[data-ui-theme="light"] code,
 :root[data-ui-theme="light"] .code,
 :root[data-ui-theme="light"] .editor {
+  color: #243247;
   border-color: var(--border, var(--b1));
+}
+
+pre,
+code,
+kbd,
+samp,
+.editor,
+textarea {
+  font-variant-ligatures: contextual;
+}
+
+:root[data-ui-theme="light"] table,
+:root[data-ui-theme="light"] th,
+:root[data-ui-theme="light"] td,
+:root[data-ui-theme="light"] .card,
+:root[data-ui-theme="light"] .panel,
+:root[data-ui-theme="light"] .lpanel {
+  border-color: var(--ui-border) !important;
+}
+
+:root[data-ui-theme="light"] th {
+  color: var(--ui-text-strong) !important;
+}
+
+:root[data-ui-theme="light"] td {
+  color: var(--ui-text) !important;
+}
+
+:disabled,
+[aria-disabled="true"],
+.btn.dm {
+  cursor: not-allowed;
+}
+
+:disabled,
+[aria-disabled="true"] {
+  opacity: 0.62;
 }
 
 :where(a, button, input, textarea, select, [tabindex]):focus-visible {
@@ -132,8 +328,8 @@
   padding: 8px 11px;
   border: 1px solid var(--border2, var(--b2, #334155));
   border-radius: 999px;
-  background: color-mix(in srgb, var(--bg2, var(--p1, #0d1018)) 92%, transparent);
-  color: var(--br, #e8f0ff);
+  background: color-mix(in srgb, var(--bg2, var(--p1, #0d1018)) 94%, transparent);
+  color: var(--ui-text-strong, var(--br, #e8f0ff));
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.16);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -157,6 +353,21 @@
 
 @media (min-width: 860px) {
   .ui-theme-toggle__label { display: inline; }
+}
+
+@media (prefers-contrast: more) {
+  :root[data-ui-theme="light"] {
+    --ui-text: #172033;
+    --ui-text-muted: #3e5067;
+    --border: #b8c6d6;
+    --border2: #a8b9cc;
+  }
+
+  :root:not([data-ui-theme="light"]) {
+    --ui-text: #e0e9f5;
+    --ui-text-muted: #a9bad0;
+    --ui-border: #3a4a61;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
