@@ -121,6 +121,16 @@
     document.head.appendChild(script);
   };
 
+  const loadAppFeatures = () => {
+    if (!location.pathname.startsWith('/app')) return;
+    if (document.querySelector('script[data-swimflow-sequence]')) return;
+    const script = document.createElement('script');
+    script.src = '/sequence-diagram.js';
+    script.defer = true;
+    script.dataset.swimflowSequence = 'true';
+    document.head.appendChild(script);
+  };
+
   const upgradeInterfaceIcons = () => {
     const primary = document.querySelector('.btnPrimary');
     if (primary && /Start Building Free/i.test(primary.textContent || '')) {
@@ -148,6 +158,7 @@
 
   const mount = () => {
     loadIcons();
+    loadAppFeatures();
     upgradeInterfaceIcons();
     if (!document.querySelector('.ui-theme-toggle')) {
       const btn = document.createElement('button');
