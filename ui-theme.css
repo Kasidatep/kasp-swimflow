@@ -10,6 +10,23 @@
   --ui-surface-soft: #111520;
   --ui-surface-raised: #151a28;
   --ui-border: #27354a;
+
+  --ui-btn-bg: #121824;
+  --ui-btn-bg-hover: #1a2433;
+  --ui-btn-border: #30415a;
+  --ui-btn-text: #d8e5f5;
+  --ui-btn-primary: #357ee8;
+  --ui-btn-primary-hover: #4b8df0;
+  --ui-btn-success-bg: #153c2f;
+  --ui-btn-success-border: #2a8b68;
+  --ui-btn-success-text: #8ee0bd;
+  --ui-btn-warning-bg: #3a2f12;
+  --ui-btn-warning-border: #9c7724;
+  --ui-btn-warning-text: #f4d06f;
+  --ui-btn-danger-bg: #3a1b20;
+  --ui-btn-danger-border: #a94750;
+  --ui-btn-danger-text: #ff9ca5;
+  --ui-btn-active-bg: #24344d;
 }
 
 :root[data-ui-theme="light"] {
@@ -49,6 +66,23 @@
   --ui-surface-soft: #f8fafc;
   --ui-surface-raised: #eef3f9;
   --ui-border: #cdd8e5;
+
+  --ui-btn-bg: #ffffff;
+  --ui-btn-bg-hover: #eef4ff;
+  --ui-btn-border: #bccbdb;
+  --ui-btn-text: #24364c;
+  --ui-btn-primary: #245fc4;
+  --ui-btn-primary-hover: #1e55b0;
+  --ui-btn-success-bg: #eaf7f1;
+  --ui-btn-success-border: #80c9ad;
+  --ui-btn-success-text: #116347;
+  --ui-btn-warning-bg: #fff7df;
+  --ui-btn-warning-border: #d8b455;
+  --ui-btn-warning-text: #74520a;
+  --ui-btn-danger-bg: #fff0f1;
+  --ui-btn-danger-border: #e2a0a6;
+  --ui-btn-danger-text: #a52d36;
+  --ui-btn-active-bg: #dfeaff;
 }
 
 :root:not([data-ui-theme="light"]) {
@@ -209,46 +243,123 @@ a:not(.btn):hover {
   opacity: 1;
 }
 
+/* Unified button system: keep labels readable and colors inside the SwimFlow palette. */
 .btn,
-button {
-  font-weight: 500;
+button:not(.ui-theme-toggle),
+.btnSecondary,
+.btnGhost,
+.btnOutline {
+  font-weight: 600;
+  background: var(--ui-btn-bg) !important;
+  color: var(--ui-btn-text) !important;
+  border-color: var(--ui-btn-border) !important;
+  box-shadow: none;
 }
 
-:root[data-ui-theme="light"] .btn:not(.ac):not(.gr):not(.ye):not(.re),
-:root[data-ui-theme="light"] button:not(.ui-theme-toggle) {
-  border-color: var(--border2, var(--b2));
-  color: var(--ui-text) !important;
-}
-
-:root[data-ui-theme="light"] .btn.dm {
-  opacity: 1 !important;
-  color: var(--ui-text-muted) !important;
-}
-
-:root[data-ui-theme="light"] .btn:hover,
-:root[data-ui-theme="light"] button:not(.ui-theme-toggle):hover {
+.btn:hover,
+button:not(.ui-theme-toggle):hover,
+.btnSecondary:hover,
+.btnGhost:hover,
+.btnOutline:hover {
+  background: var(--ui-btn-bg-hover) !important;
   color: var(--ui-text-strong) !important;
-  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.1);
+  border-color: color-mix(in srgb, var(--ui-btn-border) 65%, var(--ac)) !important;
+  box-shadow: 0 5px 16px color-mix(in srgb, var(--ac) 12%, transparent) !important;
 }
 
 .btn.ac,
-button.ac {
+button.ac,
+.btnPrimary,
+a.btnPrimary {
+  background: var(--ui-btn-primary) !important;
   color: #ffffff !important;
+  border-color: var(--ui-btn-primary) !important;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);
+}
+
+.btn.ac:hover,
+button.ac:hover,
+.btnPrimary:hover,
+a.btnPrimary:hover {
+  background: var(--ui-btn-primary-hover) !important;
+  color: #ffffff !important;
+  border-color: var(--ui-btn-primary-hover) !important;
+  filter: none !important;
 }
 
 .btn.gr,
 button.gr {
-  color: #07140f !important;
+  background: var(--ui-btn-success-bg) !important;
+  color: var(--ui-btn-success-text) !important;
+  border-color: var(--ui-btn-success-border) !important;
 }
 
-:root[data-ui-theme="light"] .btn.ye,
-:root[data-ui-theme="light"] button.ye {
-  color: #704500 !important;
+.btn.gr:hover,
+button.gr:hover {
+  background: color-mix(in srgb, var(--ui-btn-success-bg) 82%, var(--ui-btn-success-border)) !important;
+  color: var(--ui-btn-success-text) !important;
+  border-color: var(--ui-btn-success-border) !important;
 }
 
-:root[data-ui-theme="light"] .btn.re,
-:root[data-ui-theme="light"] button.re {
-  color: #a91f16 !important;
+.btn.ye,
+button.ye {
+  background: var(--ui-btn-warning-bg) !important;
+  color: var(--ui-btn-warning-text) !important;
+  border-color: var(--ui-btn-warning-border) !important;
+}
+
+.btn.ye:hover,
+button.ye:hover {
+  background: color-mix(in srgb, var(--ui-btn-warning-bg) 82%, var(--ui-btn-warning-border)) !important;
+  color: var(--ui-btn-warning-text) !important;
+  border-color: var(--ui-btn-warning-border) !important;
+}
+
+.btn.re,
+button.re {
+  background: var(--ui-btn-danger-bg) !important;
+  color: var(--ui-btn-danger-text) !important;
+  border-color: var(--ui-btn-danger-border) !important;
+}
+
+.btn.re:hover,
+button.re:hover {
+  background: color-mix(in srgb, var(--ui-btn-danger-bg) 82%, var(--ui-btn-danger-border)) !important;
+  color: var(--ui-btn-danger-text) !important;
+  border-color: var(--ui-btn-danger-border) !important;
+}
+
+.btn.on,
+.seg .btn.on,
+[aria-pressed="true"].btn,
+[aria-selected="true"].btn {
+  background: var(--ui-btn-active-bg) !important;
+  color: var(--ui-text-strong) !important;
+  border-color: color-mix(in srgb, var(--ui-btn-border) 55%, var(--ac)) !important;
+}
+
+.seg .btn:not(.on) {
+  background: transparent !important;
+  color: var(--ui-text-muted) !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.seg .btn:not(.on):hover {
+  background: color-mix(in srgb, var(--ui-btn-bg-hover) 84%, transparent) !important;
+  color: var(--ui-text-strong) !important;
+}
+
+.btn.dm,
+button.dm,
+:disabled,
+[aria-disabled="true"] {
+  background: color-mix(in srgb, var(--ui-btn-bg) 82%, transparent) !important;
+  color: var(--ui-text-muted) !important;
+  border-color: color-mix(in srgb, var(--ui-btn-border) 70%, transparent) !important;
+  opacity: 0.72 !important;
+  box-shadow: none !important;
+  cursor: not-allowed;
 }
 
 :root[data-ui-theme="light"] pre,
@@ -283,17 +394,6 @@ textarea {
 
 :root[data-ui-theme="light"] td {
   color: var(--ui-text) !important;
-}
-
-:disabled,
-[aria-disabled="true"],
-.btn.dm {
-  cursor: not-allowed;
-}
-
-:disabled,
-[aria-disabled="true"] {
-  opacity: 0.62;
 }
 
 :where(a, button, input, textarea, select, [tabindex]):focus-visible {
@@ -361,12 +461,14 @@ textarea {
     --ui-text-muted: #3e5067;
     --border: #b8c6d6;
     --border2: #a8b9cc;
+    --ui-btn-border: #91a5bb;
   }
 
   :root:not([data-ui-theme="light"]) {
     --ui-text: #e0e9f5;
     --ui-text-muted: #a9bad0;
     --ui-border: #3a4a61;
+    --ui-btn-border: #49617e;
   }
 }
 
