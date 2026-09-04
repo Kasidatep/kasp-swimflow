@@ -51,6 +51,18 @@
     document.head.appendChild(script);
   };
 
+  const loadSequenceDiagram = () => {
+    if (!location.pathname.startsWith('/app')) return;
+    if (document.querySelector('script[data-swimflow-sequence]')) return;
+    const current = document.currentScript?.src || [...document.scripts].find(s => /ui-theme\.js(?:\?|$)/.test(s.src))?.src || location.href;
+    const src = new URL('sequence-diagram.js', current).href;
+    const script = document.createElement('script');
+    script.src = src;
+    script.defer = true;
+    script.dataset.swimflowSequence = 'true';
+    document.head.appendChild(script);
+  };
+
   const upgradeInterfaceIcons = () => {
     const primary = document.querySelector('.btnPrimary');
     if (primary && /Start Building Free/i.test(primary.textContent || '')) {
@@ -79,6 +91,7 @@
   const mount = () => {
     loadIcons();
     loadBugReport();
+    loadSequenceDiagram();
     upgradeInterfaceIcons();
     if (!document.querySelector('.ui-theme-toggle')) {
       const btn = document.createElement('button');
